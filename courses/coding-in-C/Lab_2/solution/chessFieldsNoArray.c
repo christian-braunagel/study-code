@@ -1,3 +1,8 @@
+/*
+ * File: chessFieldsNoArray.c
+ * Description: Chessboard visualization program alternative not using arrays
+ */
+
 #include <stdio.h>
 
 int main(void)

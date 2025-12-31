@@ -1,3 +1,8 @@
+/*
+ * File: calculator.c
+ * Description: Simple calculator program
+ */
+
 #include <stdio.h>
 
 int main()

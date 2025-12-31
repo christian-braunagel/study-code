@@ -1,3 +1,8 @@
+/*
+ * File: chessFields.c
+ * Description: Chessboard visualization program
+ */
+
 #include <stdio.h>
 
 int main(void)
