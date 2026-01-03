@@ -11,7 +11,19 @@ This first Lab has the goal to get you started and help you to get more confiden
 3. Navigate to the GitHub repository [study-code](https://github.com/christian-braunagel/study-code).
 4. Fork the GitHub repository.
 5. Use GitHub Codespaces to open the repository remotely.
-6. After some free exploration, close the Codespace and delete it.
+6. Create a folder with name and location of your choice.
+7. Navigate with the terminal into the folder and run the following command to setup a new VB project called "HelloWorld":
+```bash
+dotnet new console -lang "VB" -n HelloWorld
+```
+8. Navigate into the created folder HelloWorld and build the project by running:
+```bash
+dotnet build
+```
+9. To execute the programm, run in the same folder:
+```bash
+dotnet run
+```
 
 ## Section II: (Optional) Setup the toolchain on your own machine
 1. Download and install [Visual Studio](https://visualstudio.microsoft.com/de/downloads/).
