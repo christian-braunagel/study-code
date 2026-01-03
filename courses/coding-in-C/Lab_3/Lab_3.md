@@ -3,7 +3,9 @@
 ## Introduction
 Implement a simple command-line calculator in C that performs basic arithmetic operations on two numbers.
 
-## Task Description
+## Section I
+
+### Task Description
 
 Write a C program that:
 
@@ -20,7 +22,7 @@ The supported operations are:
 - Multiplication (`*`)
 - Division (`/`)
 
-## Requirements
+### Requirements
 
 Your program should:
 
@@ -30,7 +32,12 @@ Your program should:
 4. Handle invalid operations gracefully
 5. Prevent division by zero
 6. Compute the result based on the selected operation
-7. Output the result in a readable format
+7. Use if-statements to determine the selected operation
+8. Output the result in a readable format
 
 Example output:
 The result of 3.00 + 4.00 = 7.00
+
+## Section II
+
+Adapt the program of Section I by swapping the if-statements with a switch-case block.
