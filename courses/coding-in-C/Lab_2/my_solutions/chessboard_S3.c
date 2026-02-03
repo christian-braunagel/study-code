@@ -20,7 +20,8 @@ int main(){
             }
         }
         else {
-            printf("%d |", array_numbers[counter_numbers]);
+            printf("%d |", array_numbers[7-counter_numbers]);
+            
             int colour_code;
             if(counter_numbers%2 == 0){
                 colour_code = 0;
@@ -37,7 +38,7 @@ int main(){
                     printf("   |");
                 }
             }
-            printf(" %d", array_numbers[counter_numbers]);
+            printf(" %d", array_numbers[7-counter_numbers]);
             counter_numbers++; 
         }
     
