@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+char array_letters[9] = {'A','B','C','D','E','F','G','H'};
+char array_numbers[9] = {'1','2','3','4','5','6','7','8'};
+
+int main(){
+
+    int counter_numbers = 8;
+    for(int r=0; r<19; r++){        
+        if(r==0 || r==18){
+            printf(" ");
+            for(int i=0; i<8; i++){
+                printf("   %c", array_letters[i]);
+            }
+        }
+        else if(r%2 == 1){
+            printf("  +");
+            for(int z=0; z<8; z++){
+                printf("---+");
+            }
+        }
+        else {
+            printf("%d |", counter_numbers);
+            for(int c=0; c<8; c++){
+                printf("   |");
+            }
+            printf(" %d", counter_numbers);
+            counter_numbers--; 
+        }
+    
+        printf("\n");
+    }
+
+}
