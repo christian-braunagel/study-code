@@ -1,9 +1,29 @@
 /*
  * File: calculator.c
- * Description: Simple calculator program
+ * Description: Simple calculator program using functions
  */
 
 #include <stdio.h>
+
+int add(int a, int b)
+{
+    return a + b;
+}
+
+int sub(int a, int b)
+{
+    return a - b;
+}
+
+int mult(int a, int b)
+{
+    return a * b;
+}
+
+int div(int a, int b)
+{
+    return a / b;
+}
 
 int main()
 {
@@ -33,29 +53,26 @@ int main()
     printf("Please enter the operation ('+', '-', '*', '/') you want to perform: ");
     scanf(" %c", &operation); // leading whitespace skips leftover newline characters in the input buffer
 
-    if (operation == '+')
+    switch (operation)
     {
-        result = num1 + num2;
-    }
-    else if (operation == '-')
-    {
-        result = num1 - num2;
-    }
-    else if (operation == '*')
-    {
-        result = num1 * num2;
-    }
-    else if (operation == '/')
-    {
+    case '+':
+        result = add(num1, num2);
+        break;
+    case '-':
+        result = sub(num1, num2);
+        break;
+    case '*':
+        result = mult(num1, num2);
+        break;
+    case '/':
         if (num2 == 0)
         {
             printf("Error: Division by zero.\n");
             return 1;
         }
-        result = num1 / num2;
-    }
-    else
-    {
+        result = div(num1, num2);
+        break;
+    default:
         printf("Unknown operation selected. Program exit.");
         return 1;
     }

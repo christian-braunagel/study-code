@@ -14,28 +14,29 @@ The goal is to:
 
 No plotting is required; the focus is on **data processing and analysis**.
 
-## Requirements
+## Section I 
+### Requirements
 
-### Data Structures
+#### Data Structures
 
 1. Define a structure `SensorData` with:
-   - `time` : double, the time of the sample in seconds (step size 0.02 s)
+   - `time` : float, the time of the sample in seconds (step size 0.02 s)
    - `probability` : double, the measured signal (between 0 and 1)
 
 2. Define a structure `Sensor` with:
    - `id` : int, sensor ID
    - `threshold` : double, detection threshold
    - `data` : array of `SensorData` containing all samples
-   - `binary` : array of int, stores detection (1 if signal > threshold, 0 otherwise)
+   - `object_detection` : array of int, stores detection (1 if signal > threshold, 0 otherwise)
 
 ---
 
-### Input Files
+#### Input Files
 
 Two measurement files are provided:
 
-- `sensor1.txt` : Sensor 1 measurements, threshold 0.8  
-- `sensor2.txt` : Sensor 2 measurements, threshold 0.7  
+- `sensor1.txt` : Sensor 1 measurements
+- `sensor2.txt` : Sensor 2 measurements
 
 Each file contains two columns:
 
@@ -43,9 +44,13 @@ Each file contains two columns:
 - Time in seconds (0 to 60 s, step 0.02 s)  
 - Signal probability (0 to 1)  
 
+For each sensor, a threshold value is provided which determines if the probability is high enough and an object detection can be derived
+
+- `sensor 1`: threshold 0.8 
+- `sensor 2`: threshold 0.7  
 ---
 
-### Program Tasks
+#### Program Tasks
 
 Implement the following in `main`:
 
@@ -62,7 +67,7 @@ Implement the following in `main`:
 
 ---
 
-## Example
+### Example
 
 --- Object Detection Results ---
 
@@ -74,19 +79,22 @@ Start: 45.00 s End: 55.00 s
 Sensor 2 detections:
 Start: 15.00 s End: 25.00 s
 Start: 30.00 s End: 40.00 s
-Start: 50.00 s End: 60.00 s
+Start: 50.00 s End: 59.98 s
 
 Fused signal (both sensors):
-Start: 30.00 s End: 40.00 s
+Start: 15.00 s End: 20.00 s Start: 30.00 s End: 40.00 s Start: 50.00 s End: 55.00 s
 
-## Hints
+### Hints
 
-- Use loops to iterate over samples
+- Use **arrays of fixed size** (3000 samples)
 - Keep track of active intervals using a state variable
 - Start a detection interval when `signal[i]` changes from 0 → 1  
-- End the interval when it changes from 1 → 0
-- Use **arrays of fixed size** (3000 samples)
-- No dynamic memory allocation or user-defined functions are required
+- End the interval when it changes from 1 → 0 (i.e. at the last index where it is still 1)
+- Implement the program logic into fitting function and call them from main
+- No dynamic memory allocation required
 
+## Section II
 
+Create in a separate source file a program to generate two txt-files which exactly correspond with the used `sensor1.txt` and `sensor2.txt` files of section I.
 
+Use the function `fprintf()` to write the generated data into the files.

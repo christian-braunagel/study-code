@@ -1,6 +1,6 @@
 /*
  * File: calculator.c
- * Description: Simple calculator program
+ * Description: Simple calculator program using switch-case
  */
 
 #include <stdio.h>
@@ -33,29 +33,26 @@ int main()
     printf("Please enter the operation ('+', '-', '*', '/') you want to perform: ");
     scanf(" %c", &operation); // leading whitespace skips leftover newline characters in the input buffer
 
-    if (operation == '+')
+    switch (operation)
     {
+    case '+':
         result = num1 + num2;
-    }
-    else if (operation == '-')
-    {
+        break;
+    case '-':
         result = num1 - num2;
-    }
-    else if (operation == '*')
-    {
+        break;
+    case '*':
         result = num1 * num2;
-    }
-    else if (operation == '/')
-    {
+        break;
+    case '/':
         if (num2 == 0)
         {
             printf("Error: Division by zero.\n");
             return 1;
         }
         result = num1 / num2;
-    }
-    else
-    {
+        break;
+    default:
         printf("Unknown operation selected. Program exit.");
         return 1;
     }

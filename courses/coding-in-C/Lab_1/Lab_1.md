@@ -10,19 +10,36 @@ This first Lab has the goal to get you started and help you to get more confiden
 2. (Optional) Register for the [Github Student Pack](https://education.github.com/pack) to increase your free Codespace limits.
 3. Navigate to the GitHub repository [study-code](https://github.com/christian-braunagel/study-code).
 4. Fork the GitHub repository.
-5. Use GitHub Codespaces to open the repository remotely.
-6. After some free exploration, close the Codespace and delete it.
+5. Use GitHub Codespaces to open the repository remotely by selecting `Code > Codespaces > New with options`.
+6. On the next page, open the C++ configuration under `Dev container configuration` and create the codespace.
+7. After the remote workspace opened, do some free exploration to get familiar with the setup.
+8. Create a first c-program (e.g. copy the file code or the file helloWorld.c from the subfolder [solution](https://github.com/christian-braunagel/study-code/blob/main/courses/coding-in-C/Lab_1/solution/helloWorld.c)).
+9. Try and build the code using on of the methods described in section XI-A and XI-B below.
+10. After you finished, close the codespace again and stop it.
 
-## Section II: (Optional) Setup the toolchain on your own machine
+## Section II: (Optional for DHBW Students) Working on a local computer in one of the pc labs
+
+1. Login on one of the windows pc available in the used pc labs with your account and password.
+2. Create a new folder for your future projects in a fitting directory (e.g. in `C:\Users\<yourUsername>\`).
+3. Open the Visual Studio Developer Command Prompt.
+4. Navigate to your newly created project folder within the terminal, For that, use the commands:
+   * `cd C:\`
+   * `cd <path>\<to>\<your>\<folder>`
+5. In the project folder, use the command `code .` to open VSCode.
+6. Do some free exploration to get familiar with the setup.
+7. Create a first c-program (e.g. copy the file code or the file helloWorld.c from the subfolder [solution](https://github.com/christian-braunagel/study-code/blob/main/courses/coding-in-C/Lab_1/solution/helloWorld.c)).
+8. Try and build the code using on of the methods described in section XI-C below.
+
+## Section III: (Optional) Setup the toolchain on your own machine
 1. Download and install [Visual Studio Code](https://code.visualstudio.com/download).
 2. Verify the successful installation by opening VS Code.
 3. Install the [C/C++ extension](https://code.visualstudio.com/docs/languages/cpp#_install-the-extension) in Visual Studio Code.
 4. Install a [C-Compiler](https://code.visualstudio.com/docs/languages/cpp#_set-up-your-c-environment) (MinGW or GCC) if not yet available on your machine.
-5. Set the path environment variable.
+5. Set the path environment variable as described in [C-Compiler](https://code.visualstudio.com/docs/languages/cpp#_set-up-your-c-environment).
 6. Verify if the compiler was successful installed and configured by checking for the compiler version in a terminal.
 7. Download and install [Git](https://git-scm.com/install/). Set VS Code as default editor and "main" as default branch name.
 
-## Section III: Working in the terminal
+## Section IV: Working in the terminal
 
 For the following exercises, use can use either the bash terminal in Codespace or Git Bash installed on your machine.
 
@@ -38,7 +55,7 @@ For the following exercises, use can use either the bash terminal in Codespace o
 10. Print the content of each file to the terminal. Start with notes/input.txt.
 11. Delete each file first and then the complete directory "terminal_challenge".
 
-## Section IV: Let's Git going
+## Section V: Let's Git going
 
 For the following exercises, use can use either the bash terminal in Codespace or Git Bash installed on your machine.
 
@@ -49,7 +66,7 @@ For the following exercises, use can use either the bash terminal in Codespace o
 5. Verify the correct configuration settings afterwards.
 6. Initialize a new Git repo in this directory.
 
-## Section V: A first commit
+## Section VI: A first commit
 
 Follow-up section to section IV.
 
@@ -60,7 +77,7 @@ Follow-up section to section IV.
 5. Verify the output of git status. What changed compared to the previous status?
 6. Check the logs of git and the hash value of your new commit.
 
-## Section VI: Branch away
+## Section VII: Branch away
 
 Follow-up section to section V.
 
@@ -75,7 +92,7 @@ Follow-up section to section V.
 9. Create a new commit for these changes.
 10. Display all existing branches.
 
-## Section VII: Merge it
+## Section VIII: Merge it
 
 Follow-up section to section VI.
 
@@ -88,7 +105,7 @@ Follow-up section to section VI.
 7. Try to merge main with "another-lorem-ipsum". What happens?
 8. Resolve the conflict so that the changes from "another-lorem-ipsum" are preserved.
 
-## Section VIII: Working with remote repositories
+## Section IX: Working with remote repositories
 
 This section describes the process you should follow for the upcoming labs:
 
@@ -112,7 +129,7 @@ You can also use Codesspaces for these exercises starting with point 3.
 10. Check out the pull requests and the changes you pushed to GitHub before merging them.
 11. Pull the merged changes from the remote repository to your local main branch.
 
-## Section IX: Hello World!
+## Section X: Hello World!
 
 Now, let's put everything of the above sections together and create your first running C-Program.
 Note: The steps below can be performed on your local machine (after following section II) or using GitHub Codespaces (after following section VIII).
@@ -128,7 +145,12 @@ However, in the best case you tried both environments to build the program and r
 5. Create a new file called "helloWorld.c" and write a short Hello World C-program.
 6. Now it is time to build! We will try out several ways to do that.
 
-### Using the terminal to build and run
+## Section XI: Building C files
+
+There are different ways on how to build/trigger the build process. Follow the tutorials below, to get familiar with all of them.
+The steps follow directly after section X but can also be used to build other c-programs.
+
+### A: Using the terminal to build and run (for Codespaces and your personal machine with gcc)
 1. Either open a terminal (if not yet open) within VSCode (menu "Terminal" > "New Terminal") or switch back to the Git Bash terminal you used in the previous steps.
    * Note I: If you use a local machine and want to use a terminal within VSCode, make sure that the terminal is also a Git Bash. You can verify and change this on the right upper corner of the terminal view in VSCode.
    * Note II: If you use GitHub codespaces, you keep using the VSCode terminal from the start.
@@ -147,13 +169,12 @@ gcc helloWorld.c -o helloWorld.o
 ```
 6. It should print out the words "Hello World" (or whatever you coded into your c-file) on your terminal.
 
-### Using VSCode to build and run
-1. Open your file "helloWorld.c" in VSCode and click on the icon on the top right corner called "Debug or Run".
+### B: Using VSCode to build and run (for Codespaces and your personal machine with gcc)
+1. Open your file "helloWorld.c" in VSCode and press F5 (or use the menue ```Run > Start Debugging``` or ```Run > Run without Debugging```).
 
 ![Image of the icon in VSCode](https://github.com/christian-braunagel/study-code/blob/main/courses/coding-in-C/Lab_1/runCFileInVSCode.png)
 
-2. Select the option "Run C/C++ file".
-   * Note: A drop down window on the top of VSCode might occur, asking to select the debug configuration. If so, select the C/C++: gcc.exe
+2. A drop down window on the top of VSCode might occur, asking to select the debug configuration. If so, select the C/C++: gcc.exe
 
    ![Image of compiler selection drop down menu in VSCode](https://github.com/christian-braunagel/study-code/blob/main/courses/coding-in-C/Lab_1/selectCompiler.png)
 
@@ -165,3 +186,15 @@ gcc helloWorld.c -o helloWorld.o
    * Under "IntelliSense mode", select the fitting platform-compiler-architecture. On Windows that would be: Windows-gcc-x64
    * Then try again to build it.
    * If it still does not work, check if gcc --version is available in the terminal. If not, you might need to add gcc to your path variable or install it first (see section II).
+
+### C: Using VSCode to build and run (on a local computer in one of the Windows pc labs at DHBW FN)
+1. Open the terminal ```Visual Studio Developer Command Prompt```, navigate to your code folder and open Visual Studion Code with ```code .```.
+2. Open your file "helloWorld.c" in VSCode and press F5 (or use the menue ```Run > Start Debugging``` or ```Run > Run without Debugging```).
+
+![Image of the icon in VSCode](https://github.com/christian-braunagel/study-code/blob/main/courses/coding-in-C/Lab_1/runCFileInVSCode.png)
+
+3. Note: A drop down window on the top of VSCode might occur, asking to select the debug configuration. If so, select the C/C++: cl.exe
+
+   ![Image of compiler selection drop down menu in VSCode](https://github.com/christian-braunagel/study-code/blob/main/courses/coding-in-C/Lab_1/selectCompilerCLang.png)
+4. Give it some seconds.
+5. If everything works, it should print out the words "Hello World" (or whatever you coded into your c-file) on your terminal.

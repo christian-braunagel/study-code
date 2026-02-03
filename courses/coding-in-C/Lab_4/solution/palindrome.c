@@ -16,8 +16,8 @@ int main()
     printf("This programs identify if the provided word is a palindrome which can be read from left to right and right to left.\n");
 
     // get and verify input
-    printf("Please enter your word (max. 100 characters): ");
-    if (scanf("%s", palindrome) != 1)
+    printf("Please enter your word (max. 99 characters): ");
+    if (scanf("%99s", palindrome) != 1)
     {
         printf("Invalid input.\n");
         return 1;
