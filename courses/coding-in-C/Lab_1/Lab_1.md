@@ -170,12 +170,11 @@ gcc helloWorld.c -o helloWorld.o
 6. It should print out the words "Hello World" (or whatever you coded into your c-file) on your terminal.
 
 ### B: Using VSCode to build and run (for Codespaces and your personal machine with gcc)
-1. Open your file "helloWorld.c" in VSCode and click on the icon on the top right corner called "Debug or Run".
+1. Open your file "helloWorld.c" in VSCode and press F5 (or use the menue ```Run > Start Debugging``` or ```Run > Run without Debugging```).
 
 ![Image of the icon in VSCode](https://github.com/christian-braunagel/study-code/blob/main/courses/coding-in-C/Lab_1/runCFileInVSCode.png)
 
-2. Select the option "Run C/C++ file".
-   * Note: A drop down window on the top of VSCode might occur, asking to select the debug configuration. If so, select the C/C++: gcc.exe
+2. A drop down window on the top of VSCode might occur, asking to select the debug configuration. If so, select the C/C++: gcc.exe
 
    ![Image of compiler selection drop down menu in VSCode](https://github.com/christian-braunagel/study-code/blob/main/courses/coding-in-C/Lab_1/selectCompiler.png)
 
@@ -188,14 +187,14 @@ gcc helloWorld.c -o helloWorld.o
    * Then try again to build it.
    * If it still does not work, check if gcc --version is available in the terminal. If not, you might need to add gcc to your path variable or install it first (see section II).
 
-### C: Using VSCode to build and run (for Codespaces and your personal machine with gcc)
-1. Open your file "helloWorld.c" in VSCode and click on the icon on the top right corner called "Debug or Run" or press F5.
+### C: Using VSCode to build and run (on a local computer in one of the Windows pc labs at DHBW FN)
+1. Open the terminal ```Visual Studio Developer Command Prompt```, navigate to your code folder and open Visual Studion Code with ```code .```.
+2. Open your file "helloWorld.c" in VSCode and press F5 (or use the menue ```Run > Start Debugging``` or ```Run > Run without Debugging```).
 
 ![Image of the icon in VSCode](https://github.com/christian-braunagel/study-code/blob/main/courses/coding-in-C/Lab_1/runCFileInVSCode.png)
 
-2. Select the option "Run C/C++ file".
-   * Note: A drop down window on the top of VSCode might occur, asking to select the debug configuration. If so, select the C/C++: cl.exe
+3. Note: A drop down window on the top of VSCode might occur, asking to select the debug configuration. If so, select the C/C++: cl.exe
 
    ![Image of compiler selection drop down menu in VSCode](https://github.com/christian-braunagel/study-code/blob/main/courses/coding-in-C/Lab_1/selectCompilerCLang.png)
-3. Give it some seconds.
-4. If everything works, it should print out the words "Hello World" (or whatever you coded into your c-file) on your terminal.
+4. Give it some seconds.
+5. If everything works, it should print out the words "Hello World" (or whatever you coded into your c-file) on your terminal.

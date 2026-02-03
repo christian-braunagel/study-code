@@ -1,0 +1,33 @@
+#############
+Pseudocode zur Aufgabe:
+Auslesen eines Sensormoduls mittels Bitmake
+#############
+
+list senordata
+list measurement_data[4]
+
+IF sensordata(7) | 0 THEN
+    OUTPUT "Fehleranzeige verifiziert!"
+ELSE 
+    OUTPUT "Keine Fehleranzeige verifiziert!"
+ENDE IF
+
+IF sensordata(6) | 0 THEN
+    OUTPUT "Übertempereatur festgestellt!"
+ELSE 
+    OUTPUT "Keine Übertemperatur festgestellt!"
+ENDE IF
+
+IF sensordata(5) | 0 THEN
+    OUTPUT "Unterspannung festgestellt"
+ELSE
+    OUTPUT "Keine Überspannung festgestellt!"
+ENDE IF
+
+WHILE i=3 >= 0 DO
+    add.measurement_data() <- sensordata(i)
+    i--
+ENDE WHILE
+
+OUTPUT measurement_data
+ENDE

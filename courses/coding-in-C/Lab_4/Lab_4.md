@@ -13,7 +13,7 @@ Write a short program following these steps:
 4. Use the pointer and change the first two letters to 'E' and 'a'. What is this syntax called?
 5. Write a function that takes a string as input.
 6. The function should change the second letter of the string to 'c'.
-7. Call the function with "AAtions speak louder than words" as parameter. What happens and why?
+7. Call the function with a string literal "AAtions speak louder than words" directly as parameter. What happens and why?
 8. Resolve the issue from point 7.
 
 ## Section II
