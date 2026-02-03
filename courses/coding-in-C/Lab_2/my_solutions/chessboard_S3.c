@@ -21,8 +21,16 @@ int main(){
         }
         else {
             printf("%d |", counter_numbers);
+            int colour_code;
+            if(counter_numbers%2 == 0){
+                colour_code = 0;
+            }
+            else{
+                colour_code = 1;
+            }
+            
             for(int c=0; c<8; c++){
-                if(c%2 == 0){
+                if((colour_code+c)%2 == 0){
                     printf("###|");
                 }
                 else{
