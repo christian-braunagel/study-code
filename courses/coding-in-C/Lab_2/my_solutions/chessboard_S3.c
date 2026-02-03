@@ -22,7 +22,12 @@ int main(){
         else {
             printf("%d |", counter_numbers);
             for(int c=0; c<8; c++){
-                printf("   |");
+                if(c%2 == 0){
+                    printf("###|");
+                }
+                else{
+                    printf("   |");
+                }
             }
             printf(" %d", counter_numbers);
             counter_numbers--; 
