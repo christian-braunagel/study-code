@@ -18,11 +18,13 @@ int main()
 
     // get and verify input
     printf("Please enter your word (max. 100 characters): ");
-    if (scanf("%s", palindrome) != 1)
+
+    if (fgets(palindrome, sizeof(palindrome), stdin) == NULL)
     {
         printf("Invalid input.\n");
         return 1;
     }
+    palindrome[strcspn(palindrome, "\n")] = '\0';
 
     // iterate to the half of the string
     // if uneven number of chars in string: ignore last char (in the middle of the string) with floor

@@ -1,0 +1,29 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run / Debug C",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "preLaunchTask": "build (c)",
+            "windows": {
+                "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "MIMode": "gdb",
+                "miDebuggerPath": "C:/msys64/ucrt64/bin/gdb.exe"
+            },
+            "linux": {
+                "MIMode": "gdb",
+                "miDebuggerPath": "/usr/bin/gdb"
+            },
+            "osx": {
+                "MIMode": "lldb"
+            }
+        }
+    ]
+}
