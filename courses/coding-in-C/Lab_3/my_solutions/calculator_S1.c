@@ -9,7 +9,10 @@ int main(){
     scanf("%f", &second_number);
     printf("Your two numbers: %f, %f\n\n", first_number, second_number);
 
-    
+    printf("Enter the arithmetic operation (+, -, *, /)\n");
+    char a_operation;
+    scanf(" %c", &a_operation);
+    printf("Your arithmetic operation is: %c\n\n", a_operation);
 
     return 0;
 }
