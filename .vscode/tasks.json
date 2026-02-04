@@ -3,7 +3,7 @@
         {
             "type": "cppbuild",
             "label": "C/C++: gcc Aktive Datei kompilieren",
-            "command": "/usr/bin/gcc",
+            "command": "C:/Program Files/mingw32/bin/gcc",
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
