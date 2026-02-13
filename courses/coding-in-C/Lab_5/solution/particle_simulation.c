@@ -7,12 +7,11 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define FIELD_SIZE 10
-
 int main()
 {
-    int field[FIELD_SIZE] = {0};
-    int temp[FIELD_SIZE] = {0};
+    const int FIELD_SIZE = 10;
+    int field[10] = {0};
+    int temp[10] = {0};
     int *p_field = field;
     int *p_temp = temp;
 

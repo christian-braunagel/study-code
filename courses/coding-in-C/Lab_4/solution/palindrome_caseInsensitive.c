@@ -22,7 +22,7 @@ int main()
     if (fgets(palindrome, sizeof(palindrome), stdin) == NULL)
     {
         printf("Invalid input.\n");
-        return 1;
+        return -1;
     }
     palindrome[strcspn(palindrome, "\n")] = '\0';
 
