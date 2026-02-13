@@ -6,9 +6,9 @@ int main(void) {
     for (row = 8; row >= 1; row--) {
         for (col = 0; col < 8; col++) {
             if ((row + col) % 2 == 0) {
-                printf("## ");
+                printf("##");
             } else {
-                printf("-- ");
+                printf("--");
             }
         }
         printf("\n\n");

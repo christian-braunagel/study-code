@@ -11,7 +11,7 @@ int main(){
     scanf("%f", &num2);
 
     printf("Choose the operation (+, -, *, /): ");
-    scanf("%c", &operation);
+    scanf(" %c", &operation);
 
     if(operation == '+'){
         printf("The result of %.2f + %.2f = %.2f\n", num1, num2, result);
