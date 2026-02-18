@@ -1,24 +1,4 @@
 {
-<<<<<<< HEAD
-  "configurations": [
-    {
-      "name": "windows-clang-x64",
-      "includePath": [
-        "${workspaceFolder}/**"
-      ],
-      "defines": [
-        "_DEBUG",
-        "UNICODE",
-        "_UNICODE"
-      ],
-      "compilerPath": "C:\\01_Pamina\\01_Studium\\\"Programmieren I\"\\w64devkit",
-      "intelliSenseMode": "windows-clang-x64",
-      "cStandard": "${default}",
-      "cppStandard": "${default}"
-    }
-  ],
-  "version": 4
-=======
     "version": 4,
     "configurations": [
         {
@@ -98,5 +78,4 @@
             "cStandard": "c17"
         }
     ]
->>>>>>> upstream/main
 }

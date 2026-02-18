@@ -5,7 +5,10 @@
 int main() {
     srand(time(NULL)); //allows for randomization
 
-    int particles[11] = {0,1,0,1,0,1,0,0,0,0};
+    int particles[11] = {0,0,0,0,0,0,0,0,0,0};
+    particles[2] = 1;
+    particles[4] = 1;
+    particles[6] = 1;
     int *p_particles = particles;
 
     int temporary[11] = {0,0,0,0,0,0,0,0,0,0};
