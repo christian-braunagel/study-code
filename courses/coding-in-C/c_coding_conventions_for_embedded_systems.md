@@ -250,6 +250,7 @@ Pointers are powerful but error-prone. Use them **carefully and clearly**.
 
 - Pointer variables must start with **`p`**
 - The name should still describe the content
+- Write the * next to the name, not the datatype
 
 **Good:**
 ```c
@@ -259,8 +260,8 @@ char *p_name;
 
 **Bad:**
 ```c
-int *value;
-char *ptr;
+int* value;
+char * ptr;
 ```
 
 This makes pointer usage immediately visible when reading code.
@@ -438,6 +439,3 @@ static int helper_function(int value)
 > Clean code is a skill — it improves with practice.
 
 ---
-
-End of document.
-

@@ -14,7 +14,32 @@ The goal is to:
 
 No plotting is required; the focus is on **data processing and analysis**.
 
-## Section I 
+## Section I
+Write one or more small programs for the following functions
+to read or write data from/into a text-file.
+- fgetc()
+- fgets()
+- fscanf()
+- fputc()
+- fputs()
+- fprintf()
+
+For the reading functions:
+Create a text-file (.txt) by yourself and put it into the folder of the C-file or use one of the txt-files of section II.
+
+What happens when you move the file you are reading into another folder?
+What do you need to adjust to solve the issue?
+
+## Section II
+Create a struct named Car with three fields: fuel_level and max_fuel_level (float) and model (char array).
+Write a function called refuel() that:
+- Takes a pointer to a Car struct.
+- Takes an amount (float) of fuel to add.
+- increases the car's current fuel level if it does not exceed the max_fuel_level of the car.
+In main, initialize a car with a low fuel level, call the refuel function, and print the result.
+
+## Section III
+
 ### Requirements
 
 #### Data Structures
@@ -92,9 +117,3 @@ Start: 15.00 s End: 20.00 s Start: 30.00 s End: 40.00 s Start: 50.00 s End: 55.0
 - End the interval when it changes from 1 → 0 (i.e. at the last index where it is still 1)
 - Implement the program logic into fitting function and call them from main
 - No dynamic memory allocation required
-
-## Section II
-
-Create in a separate source file a program to generate two txt-files which exactly correspond with the used `sensor1.txt` and `sensor2.txt` files of section I.
-
-Use the function `fprintf()` to write the generated data into the files.

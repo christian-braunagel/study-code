@@ -109,8 +109,8 @@ This section describes the process you should follow for the upcoming labs:
 You can also use Codesspaces for these exercises starting with point 3.
 
 
-1. Configure SSH for your GitHub account and your local machine.
-2. Clone the forked repository [study-code](https://github.com/christian-braunagel/study-code) from section I to your local machine via ssh.
+1. Optional: Configure SSH for your GitHub account and your local machine.
+2. Clone the forked repository [study-code](https://github.com/christian-braunagel/study-code) or any GitHub repository created by yourself from section I to your local machine via ssh or https.
 3. Open your local terminal and navigate to the cloned project.
 4. Create a new branch.
 5. Create a file called test.md in this branch and fill in some random numbers.
