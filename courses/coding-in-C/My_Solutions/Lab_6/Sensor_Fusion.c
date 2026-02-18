@@ -7,9 +7,6 @@ int main() {
         char model[];
     }
     
-    void refuel() {
-        jej
-    }
 
 
 
