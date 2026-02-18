@@ -12,7 +12,7 @@
  */
 void change_char(char str[])
 {
-    *(str + 1) = 'c';
+    *(str + 1) = 'c'; // gleichbedeutend mit str[1]
     printf("%s\n", str);
     return;
 }
@@ -34,7 +34,7 @@ int main()
 
     printf("%s\n", proverb);
 
-    // change_char("literal"); // würde ein Segmentation Fault erzeugen, da in function der Inhalt angepasst werden soll aber es sich um einen Stringliteral handelt, der auf dem statischen Speichersegment liegt, der nur readonly ist
+    // change_char("literal"); // würde ein Segmentation Fault erzeugen, da in function der Inhalt angepasst werden soll aber es sich um einen Stringliteral handelt, der auf dem statischen Speichersegment DataSegment liegt, der nur readonly ist
     change_char(proverb2); // korrekt: Pointer übergeben oder eben char [] denn char [] ist intern char *
 
     return 0;
