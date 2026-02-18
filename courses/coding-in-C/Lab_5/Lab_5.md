@@ -85,7 +85,7 @@ You will practice:
 
 1. Create an integer array initialized with zeros.
 2. Place **three particles** at positions 2, 4, and 6 (set array values to 1 at these indices).
-Note: If you place the particles with an odd distance, the will never collide.
+Note: If you place the particles with an odd distance, they will never collide.
 3. Create a pointer pointing to the first element of the array.
 4. Create a **temporary array** and a pointer to it to help you create and store the next state of the simulation.
 5. Simulate in **discrete time steps**. For each step:
