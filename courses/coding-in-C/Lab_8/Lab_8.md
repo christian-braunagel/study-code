@@ -42,10 +42,10 @@ project/
 
 - The `playlist.h` file should only contain **declarations**, not function definitions
 - Use the following command in the terminal to build the app: gcc -I./include main.c src/playlist.c -o playlist_app
-- Note: The option "-I ./include" adds an additional include path, so that the compiler would now search first in the current folder of the corresponding c-file, then in the ./include path and finally in the system include paths. This is neccessary because "playlist.h" is no longer stored in the same folder.
+- Note: The option "-I ./include" adds an additional include path, so that the compiler would now search first in the current folder of the corresponding c-file, then in the ./include path and finally in the system include paths. This can be neccessary depending on how you included your header because "playlist.h" is no longer stored in the same folder as main.c.
 - Note: The order of the mentioned c-files in the gcc command is arbitrarily.
 - Use the following command to run the build app via terminal: .\playlist_app.exe
-- Not: The command above needs to be adjusted on other operating systems (usually without .exe)
+- Not: The command above needs to be adjusted on other operating systems (usually without .exe and with ./)
 
 ## Section II: Unit-Testing your Project
 

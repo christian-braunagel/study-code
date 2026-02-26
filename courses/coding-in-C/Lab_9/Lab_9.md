@@ -15,6 +15,9 @@ The project already provides:
 
 ## Section I: Search Algorithms
 
+In this section, you should implement a linear search algorithm.
+That means that your search algorithm simply moves through your list and checks every element. If the correct element is found, the algorithm stops.
+
 ### Requirements
 
 1. Implement a function that searches for a song by its title.
@@ -24,28 +27,14 @@ The project already provides:
 Song* find_song_by_title(Playlist *playlist, const char *title);
     
 ```
-3. Use a linear search and strcmp for string comparison
+3. Use a linear search and strcmp for string comparison.
 
-4. Return a pointer to the found Song
+4. Return a pointer to the found Song.
 
-5. Return NULL if the song is not found
-
-
-## Section II: Recursive Search by Title
-
-### Requirements
-
-1. Implement a recursive version of the search function.
-
-```c
-Song* find_song_recursive(Song *current, const char *title);
-```
-2. No loops (for, while) are used
-3. Use recursion only
-4. Stop recursion when the song is found or end of the list is reached
+5. Return NULL if the song is not found.
 
 
-## Section III: Counting Songs
+## Section II: Counting Songs
 
 ### Requirements
 
@@ -57,7 +46,7 @@ int count_songs_recursive(const Song *current);
 2. No loops (for, while) are used
 3. Use recursion only
 
-## Section IV: Sorting Algorithms
+## Section III: Sorting Algorithms
 
 ### Requirements
 
@@ -66,10 +55,10 @@ int count_songs_recursive(const Song *current);
 ```c
 void sort_playlist_by_title(Playlist *playlist);
 ```
-2. Use the Bubble Sort algorithm 
-3. You may swap song contents instead of list nodes
+2. Use the Selection, Insertion or Quicksort.
+3. You may swap song contents instead of list nodes but this is not mandatory.
 
-## Section V: Adapt main.c to show-case the new functions
+## Section IV: Adapt main.c to show-case the new functions
 
 ### Requirements
 
@@ -78,7 +67,6 @@ void sort_playlist_by_title(Playlist *playlist);
 3. Print the playlist using `print_playlist`.
 4. **Search functions:**
    - Use `find_song_by_title` to find a song by its title (iterative)
-   - Use `find_song_recursive` to find a song by its title (recursive)
    - Print the results to the console
 5. **Recursion function:**
    - Use `count_songs_recursive` to count the number of songs
@@ -88,7 +76,6 @@ void sort_playlist_by_title(Playlist *playlist);
    - Print the playlist after sorting
 7. Delete the entire playlist using `delete_playlist` to free memory.
 8. Each function should be called in a **separate block** (e.g. highlighted by comments)
-9. Use descriptive `printf` statements to indicate which part of the program is running.
 
 ## General Hints
 
