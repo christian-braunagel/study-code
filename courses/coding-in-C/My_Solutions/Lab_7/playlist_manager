@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+struct song {
+    char title;
+    char *p_title = title;
+
+    char *p_title = malloc(sizeof(*p_title));
+    
+    if (p_title == NULL) {
+        printf("Something went wrong during the memory allocation\n");
+        return 1;
+    }
+
+    char *p_author = malloc(sizeof(*p_author));
+
+    if (p_author == NULL) {
+        printf("Something went wrong during the memory allocation\n");
+        return 1;
+    }
+
+}
