@@ -78,6 +78,7 @@ int main()
 
     Node *temp = head;
 
+    // alternative: Node *temp = head->next->next;
     // Move to node before position 3 (index 2)
     for (int i = 0; i < 2; i++)
     {

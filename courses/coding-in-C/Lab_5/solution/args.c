@@ -4,6 +4,10 @@
 int main(int argc, char **argv)
 {
 
+    printf("%p\n", argv);
+    printf("%p\n", &argv);
+    printf("%p\n", *argv);
+    printf("%c\n", *argv[0]);
     // using indexing
     for (int i = 0; i < argc; i++)
     {

@@ -55,7 +55,7 @@ int count_songs_recursive(const Song *current);
 ```c
 void sort_playlist_by_title(Playlist *playlist);
 ```
-2. Use the Selection, Insertion or Quicksort.
+2. Use the Insertion or Quicksort.
 3. You may swap song contents instead of list nodes but this is not mandatory.
 
 ## Section IV: Adapt main.c to show-case the new functions
@@ -66,7 +66,7 @@ void sort_playlist_by_title(Playlist *playlist);
 2. Add at least four songs to the playlist using `add_song`.
 3. Print the playlist using `print_playlist`.
 4. **Search functions:**
-   - Use `find_song_by_title` to find a song by its title (iterative)
+   - Use `find_song_by_title` to find a song by its title
    - Print the results to the console
 5. **Recursion function:**
    - Use `count_songs_recursive` to count the number of songs
@@ -84,3 +84,4 @@ void sort_playlist_by_title(Playlist *playlist);
 * Keep your code modular and readable
 * Test each function individually before combining them
 * Use cmake to build the final programm
+* Do not use existing libraries with already implemented functions to sort or search.

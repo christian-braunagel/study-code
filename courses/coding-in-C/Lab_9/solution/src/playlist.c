@@ -166,42 +166,91 @@ int count_songs_recursive(const Song *current)
  * Extension 3: Sorting Algorithms
  * ------------------------------------------------- */
 
-static void swap_song_data(Song *a, Song *b)
-{
-    char *tmp_title = a->title;
-    char *tmp_artist = a->artist;
+// Bubble Sort
+// static void swap_song_data(Song *a, Song *b)
+// {
+//     char *tmp_title = a->title;
+//     char *tmp_artist = a->artist;
 
-    a->title = b->title;
-    a->artist = b->artist;
+//     a->title = b->title;
+//     a->artist = b->artist;
 
-    b->title = tmp_title;
-    b->artist = tmp_artist;
-}
+//     b->title = tmp_title;
+//     b->artist = tmp_artist;
+// }
 
+// void sort_playlist_by_title(Playlist *playlist)
+// {
+//     if (!playlist->p_head)
+//         return;
+
+//     int swapped;
+//     Song *ptr1;
+//     Song *lptr = NULL;
+
+//     do
+//     {
+//         swapped = 0;
+//         ptr1 = playlist->p_head;
+
+//         while (ptr1->p_nextSong != lptr)
+//         {
+//             if (strcmp(ptr1->title, ptr1->p_nextSong->title) > 0)
+//             {
+//                 swap_song_data(ptr1, ptr1->p_nextSong);
+//                 swapped = 1;
+//             }
+//             ptr1 = ptr1->p_nextSong;
+//         }
+//         lptr = ptr1;
+
+//     } while (swapped);
+// }
+
+// Insertion Sort
 void sort_playlist_by_title(Playlist *playlist)
 {
-    if (!playlist->p_head)
-        return;
+    Song *pCur = playlist->p_head;
+    Song *sorted = NULL;
 
-    int swapped;
-    Song *ptr1;
-    Song *lptr = NULL;
-
-    do
+    // Playlist leer
+    if (pCur == NULL)
     {
-        swapped = 0;
-        ptr1 = playlist->p_head;
+        return;
+    }
 
-        while (ptr1->p_nextSong != lptr)
+    while (pCur != NULL)
+    {
+        // wird benötigt, um die while-Schleife weiter zu durchlaufen. Denn:
+        // pCur->p_nextSong ist am Ende in der Regel auf die sortierte Liste umgebogen
+        Song *pNext = pCur->p_nextSong;
+
+        // sortierte Liste ist noch leer
+        if (sorted == NULL)
         {
-            if (strcmp(ptr1->title, ptr1->p_nextSong->title) > 0)
-            {
-                swap_song_data(ptr1, ptr1->p_nextSong);
-                swapped = 1;
-            }
-            ptr1 = ptr1->p_nextSong;
+            sorted = pCur;
+            pCur->p_nextSong = NULL; // aus alter Liste lösen
         }
-        lptr = ptr1;
+        // Aktueller Titel (cur) muss vor ersten Titel in sortierter Liste (sorted)
+        else if (strcmp(sorted->title, pCur->title) >= 0)
+        {
+            pCur->p_nextSong = sorted;
+            sorted = pCur;
+        }
+        // Aktueller Titel muss an die richtige Stelle gesetzt werden
+        else
+        {
+            Song *pTmp = sorted;
+            while (pTmp->p_nextSong != NULL && strcmp(pTmp->p_nextSong->title, pCur->title) < 0)
+            {
+                pTmp = pTmp->p_nextSong;
+            }
+            pCur->p_nextSong = pTmp->p_nextSong;
+            pTmp->p_nextSong = pCur;
+        }
 
-    } while (swapped);
+        pCur = pNext;
+    }
+    // neue sortierte Liste wird Playlist übergeben
+    playlist->p_head = sorted;
 }
