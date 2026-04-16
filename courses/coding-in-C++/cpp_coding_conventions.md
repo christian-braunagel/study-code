@@ -714,6 +714,7 @@ Classes should protect their internal state and expose a clear interface.
 
 - Member variables must generally be `private`.
 - Public methods form the interface.
+- Methods with more than 5 lines of code should be defined outside of the class.
 - A class should have one clear responsibility.
 
 ### Good
@@ -878,7 +879,6 @@ Inheritance is powerful, but it should be used carefully.
 ### Rules
 
 - Prefer composition over inheritance unless there is a true “is-a” relationship.
-- Use inheritance only when it improves design clarity.
 - Base classes should have a meaningful abstraction.
 - Avoid deep inheritance hierarchies.
 
@@ -960,7 +960,6 @@ Static members belong to the class, not to an object instance.
 
 - Use static data only when shared state is truly required.
 - Static methods must not depend on object state.
-- Static state should not become a hidden global system.
 
 ### Good
 ```cpp
