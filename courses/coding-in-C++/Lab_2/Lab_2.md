@@ -96,7 +96,102 @@ Create a class “Note” that stores a text message which is only known at runt
 * When a Note object is copied, the new object must allocate its own memory and store its own copy of the string
 * Verify if this resolves the observed issue from Part 1
 
-## 🟡 Section III: Fault Analysis – Online Shop Article Class
+## 🟢 Section III: Our C++ coding convention Part 2
+The goal of this section is to familiarize yourself with the C++ coding convention of this course.
+
+### Task Description
+* Navigate to the __coding-in-C++__ folder and open the __cpp_coding_conventions.md__
+* Read the remaining points (starting with section 18) of the convention in detail
+* Write down any point that is unclear to you for later discussions
+
+## 🟢 Section IV: Fluent Drink Builder
+
+In this task you will implement a small helper class using **method chaining** and **constexpr values**.
+
+---
+
+### 📘 Task Description
+
+Implement a class `DrinkBuilder` that allows configuring a drink step by step using a fluent interface.
+
+The goal is to enable code like this:
+
+```cpp
+DrinkBuilder builder;
+builder.setName("Tea")
+       .setSugar(2)
+       .setTemperature(65)
+       .setWithMilk(true)
+       .print();
+```
+
+---
+
+### Requirements
+
+- The class should contain at least:
+  - `std::string name`
+  - `int sugar`
+  - `int temperature`
+  - `bool withMilk`
+
+- Define at least one constant default value using `constexpr`, for example:
+  - a default temperature
+  - a maximum allowed sugar amount
+
+- This constant must be available at compile time
+- Use the `constexpr` value to initialize at least one attribute
+
+- The class should have at least the following methods:
+  - `setName(const std::string& name)`
+  - `setSugar(int sugar)`
+  - `setTemperature(int temperature)`
+  - `setWithMilk(bool withMilk)`
+
+Method chaining should be enabled.  
+This means that all setter methods must:
+
+- modify the object state
+- return a reference to the current object (`*this`)
+
+---
+
+### Additional Methods
+
+#### print()
+
+- Outputs all current values in a readable format
+
+#### isValid()
+
+- Checks whether the current drink configuration is valid
+- This method must be marked as `const`
+
+---
+
+### Additional Constraints
+
+- Use `const std::string&` where appropriate
+- At least one method must be marked as `const`
+- Prevent invalid values, for example:
+  - sugar must not be negative
+  - temperature must be greater than 0
+- Use reasonable default values with `constexpr`
+
+---
+
+### Example Output
+
+```text
+Drink: Tea
+Sugar: 2
+Temperature: 65
+With milk: true
+```
+
+---
+
+## 🟡 Section V: Fault Analysis – Online Shop Article Class
 
 In this section you will analyze and debug an existing class implementation instead of writing one from scratch.
 
@@ -207,10 +302,24 @@ Answer the following questions:
 ### Task Part 3
 Write a corrected version of the program that solves all found issues and is in accordance with our coding convention.
 
+### Task Part 4
+Based on your developed code, create two UML diagrams: one class and one object diagram.
+
+The **class diagram** should contain all the details possible which are also available in the code including:
+- attributes
+- methods
+- visibility
+- data types
+- parameter with direction
+- special behaviour such as static or derived attributes
+
+The **UML object diagram** shows one concrete snapshot of your system at runtime.
+Please use meaningful object names and concrete attribute values.
+
 ### Hint
 Many of the errors are related to core OOP principles such as encapsulation, proper initialization, and safe memory handling discussed in the lecture.
 
-## 🟢 Section IV: Create UML Class Diagrams
+## 🟢 Section VI: Create UML Class Diagram
 
 In this section you will practice the basics of the UML class diagram notation.
 
@@ -233,9 +342,8 @@ A cinema manages movies, customers, and tickets.
 - The total number of created tickets should be tracked.
 - The final ticket price depends on the movie price.
 
----
 
-## Tasks
+### Tasks
 
 1. Model the described system in an UML class diagram in drawIO.
 
@@ -251,3 +359,71 @@ A cinema manages movies, customers, and tickets.
      - one method **without parameters**
    - Mark appropriate methods with `{query}`
    - Use the direction for parameters
+
+## 🔴 Section VII: Search Engine
+
+In this section, you will create a simplified **Search Engine System** including UML diagrams and C++ code.
+
+---
+
+### 📘 System Description
+
+A search engine allows users to enter a textual query in order to find relevant web content.
+
+Each searchable item in the system represents a web resource.  
+Such a resource has a unique address, contains textual information, and has an internal ranking value that indicates how relevant or important it is.  
+Some values are not stored directly but can be derived, for example whether a resource is considered “popular” based on its ranking.
+
+Users interact with the system by entering search queries.  
+A query consists of a text input and may define a maximum number of results that should be returned.  
+It should be possible to check whether a query is valid (e.g. not empty).
+
+The system itself processes queries and keeps track of usage statistics.  
+For example, it may count how many queries have been executed in total.  
+Additionally, the system should be able to output basic information about itself.
+
+Each component of the system should provide meaningful functionality, such as:
+
+- displaying its internal state in a readable format  
+- checking conditions without modifying internal data  
+- processing input parameters where appropriate
+
+---
+
+### Tasks: Part I
+
+- Create an **UML class diagram** for the described system
+- You must **identify all necessary classes yourself**  
+- Decide which elements are:
+  - **attributes**
+  - **methods (operations)**  
+- Include:
+  - visibility (`+`, `-`)  
+  - data types  
+  - return types  
+  - parameters including direction
+  - mark readonly methods as `{query}`  
+
+- Your diagram must contain at least:
+  - one **static attribute**  
+  - one **derived attribute**  
+
+🚫 Do **not** model relationships between classes in this task.
+
+- Create an **UML object diagram** that shows one concrete snapshot of your system at runtime
+- Use meaningful object names and concrete attribute values
+
+### Tasks: Part II
+
+- Based on your UML diagram, implement the Search Engine system in C++
+- The code should reflect exactly your UML architecture
+- The code should consider OOP best-practices such as abstraction and encapsulation
+
+Additionally, implement the following functionality:
+- Implement one or more methods that perform the actual search feature; e.g.
+   - storing several web resources inside the search engine
+   - checking whether the query text is contained in the text content of a resource
+   - sorting all matching resources by ranking in descending order
+   - returning or printing only the first `maxResults` matches
+
+- Demonstrate the functionality in `main()` with multiple resources and at least two different queries

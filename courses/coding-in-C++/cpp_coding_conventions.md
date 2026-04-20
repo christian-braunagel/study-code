@@ -598,7 +598,7 @@ case Command::Stop:
 
 default:
     report_invalid_command();
-    break;
+    // no break if default is last case
 }
 ```
 

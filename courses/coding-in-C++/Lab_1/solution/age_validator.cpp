@@ -13,11 +13,23 @@ namespace validation
     const std::uint8_t ADULT_AGE_LIMIT = 18;
     const std::uint8_t SENIOR_AGE_LIMIT = 65;
 
+    /**
+     * @brief Checks whether the given age is considered adult.
+     *
+     * @param[in] age  Age value to classify
+     * @return         true if age is at least ADULT_AGE_LIMIT, otherwise false
+     */
     bool isAdult(std::uint8_t age)
     {
         return age >= ADULT_AGE_LIMIT;
     }
 
+    /**
+     * @brief Checks whether the given age is considered senior.
+     *
+     * @param[in] age  Age value to classify
+     * @return         true if age is at least SENIOR_AGE_LIMIT, otherwise false
+     */
     bool isSenior(std::uint8_t age)
     {
         return age >= SENIOR_AGE_LIMIT;
@@ -26,7 +38,7 @@ namespace validation
 
 int main()
 {
-    const std::uint8_t MAX_AGE = 150;
+    const int MAX_AGE = 150;
     int age = 0;
     /* Why we do not use std::uint8_t here?
      * std::uint8_t is usually an alias for unsigned char
@@ -36,7 +48,7 @@ int main()
      *
      * Other options would be: Use an integer instead and then cast to:
      * std::uint16_t or std::uint32_t increasing the needed storage
-     * std::uint_least16_t ensuring the minimum size of 8 Bit
+     * std::uint_least16_t ensuring the minimum size of 16 Bit
      * std::uint_fast16_t ensuring using the most efficient data type for the cpu
      */
 
@@ -44,7 +56,7 @@ int main()
     while (true)
     {
         // if not a number or to large for int
-        if (!(std::cin >> age))
+        if (!(std::cin >> age)) // please do not use something like std::cin >> reinterpret_cast<unsigned int&>(age);
         {
             std::cout << "You did not enter a valid number. Please try again." << '\n';
             std::cin.clear();

@@ -165,7 +165,7 @@ The function should:
    * Reset error status
    * flush buffer
    * request another input
-5. Use portable data types to ensure the most efficient execution of the code
+5. Use portable data types to ensure the most time efficient execution of the code
 
 #### Example Input
 
