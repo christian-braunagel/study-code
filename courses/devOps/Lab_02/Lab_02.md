@@ -151,7 +151,7 @@ Be prepared to explain:
 * Why the second merge created a merge commit
 * What caused the merge conflict and how you resolved it
 
-## 🟡 Section II: GitLab Branching and Merge Requests
+## 🟢 Section II: GitLab Branching and Merge Requests
 
 In this exercise, you will practice a complete GitLab workflow.
 You will create a new remote project on GitLab, clone it to your local machine, create a branch, push your changes, open a merge request, merge it into `main`, and update your local repository afterwards.
