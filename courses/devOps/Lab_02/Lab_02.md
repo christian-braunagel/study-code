@@ -333,11 +333,6 @@ git log --oneline --graph --all
 
 Switch back to `main` and create a second branch called `main-update-for-rebase`.
 
-```bash
-git switch main
-git switch -c main-update-for-rebase
-```
-
 Now edit the same area of `README.md` that you changed on `rebase-experiment`.
 Make changes that are different from the changes on your branch.
 
@@ -350,13 +345,8 @@ For example:
 
 Push the second branch to GitLab.
 
-```bash
-git push -u origin main-update-for-rebase
-```
-
 Create a merge request from `main-update-for-rebase` into `main`.
 Review the changes, merge the merge request, and delete the source branch if GitLab offers this option.
-This moves the remote `main` branch forward without pushing directly to the protected branch.
 
 #### 3. Start the Rebase
 
@@ -367,11 +357,7 @@ git switch main
 git pull origin main
 ```
 
-Switch back to your long-running branch.
-
-```bash
-git switch rebase-experiment
-```
+Switch back to your rebase-experiment branch.
 
 Rebase it onto the updated `main` branch.
 
@@ -429,49 +415,3 @@ Answer the following questions in `documentation.md`:
 * How could you avoid this situation in a real project?
 
 Add and commit your answers.
-
-#### 6. Push the Rebased Branch
-
-Push the rebased branch to GitLab.
-
-```bash
-git push -u origin rebase-experiment
-```
-
-If you had already pushed this branch before rebasing, Git would reject a normal push because the rebase rewrites commit history.
-In that case, you would need:
-
-```bash
-git push --force-with-lease origin rebase-experiment
-```
-
-Use `--force-with-lease` only for your own feature branch and only when you understand why the history changed.
-
-#### 7. Create and Merge a Merge Request
-
-Create a merge request from `rebase-experiment` into `main`.
-
-In GitLab:
-
-* Review the final changes carefully
-* Check that the commit history looks linear
-* Merge the merge request into `main`
-* Delete the source branch if GitLab offers this option
-
-Update your local repository afterwards:
-
-```bash
-git switch main
-git pull origin main
-git fetch --prune
-```
-
-#### 8. Final Check
-
-At the end of the exercise, you should be able to explain:
-
-* What `git rebase` does
-* Why rebasing replays commits
-* Why several conflicts can appear during one rebase
-* When `git rebase --abort` is useful
-* Why force pushing after a rebase can be dangerous on shared branches
