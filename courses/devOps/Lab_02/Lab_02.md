@@ -151,3 +151,143 @@ Be prepared to explain:
 * Why the second merge created a merge commit
 * What caused the merge conflict and how you resolved it
 
+## 🟡 Section II: GitLab Branching and Merge Requests
+
+In this exercise, you will practice a complete GitLab workflow.
+You will create a new remote project on GitLab, clone it to your local machine, create a branch, push your changes, open a merge request, merge it into `main`, and update your local repository afterwards.
+
+### Task Description
+
+Create a new GitLab project called `gitlab-merge-request-practice`.
+The project should be used to practice the connection between your local Git repository and a remote GitLab repository.
+
+#### 1. Create a New Project on GitLab
+
+* Log in to your GitLab account
+* Select `New project`
+* Choose `Create blank project`
+* Enter the project name `gitlab-merge-request-practice`
+* Set the visibility level to `Private`
+* Enable the option to initialize the repository with a `README`
+* Create the project
+* Copy the clone URL of the project
+
+#### 2. Clone the Project Locally
+
+Clone the GitLab project to your local machine.
+
+Example command:
+
+```bash
+git clone <your-gitlab-clone-url>
+cd gitlab-merge-request-practice
+```
+
+After cloning:
+
+* Check the current branch with `git branch`
+* Check the remote connection with `git remote -v`
+* Open the project folder in your editor
+
+#### 3. Create a Branch and Make Changes
+
+Create a new branch called `project-documentation`.
+
+On this branch:
+
+* Add a section called `Project Overview` to `README.md`
+* Create a new file called `documentation.md`
+* Add a short description of the purpose of this repository
+* Add a list of at least three GitLab features you used in this exercise
+* Save your changes
+
+#### 4. Add and Commit Your Changes
+
+Check which files were changed:
+
+```bash
+git status
+```
+
+Then add and commit your changes.
+
+
+Check the commit history:
+
+```bash
+git log --oneline
+```
+
+#### 5. Push the Branch to GitLab
+
+Push your branch to the remote GitLab repository.
+
+Example command:
+
+```bash
+git push -u origin project-documentation
+```
+
+After pushing:
+
+* Open the GitLab project in your browser
+* Check that the branch `project-documentation` exists on GitLab
+* Check that your commit is visible on GitLab
+
+#### 6. Create a Merge Request
+
+Create a merge request from your branch into `main`.
+
+In GitLab:
+
+* Select `Merge requests`
+* Create a new merge request
+* Select `project-documentation` as the source branch
+* Select `main` as the target branch
+* Add a meaningful title and short description
+* Create the merge request
+* Review the changed files in the merge request
+
+#### 7. Merge the Branch into Main
+
+After reviewing the merge request:
+
+* Merge the merge request into `main`
+* Delete the source branch if GitLab offers this option
+* Open the repository file view and check that the changes are now visible on `main`
+
+#### 8. Update Your Local Repository
+
+Your local `main` branch is now behind the remote `main` branch because the merge happened on GitLab.
+Update your local repository.
+
+Example commands:
+
+```bash
+git switch main
+git pull origin main
+```
+
+After pulling:
+
+* Check that `README.md` contains your merged changes
+* Check that `documentation.md` exists locally
+* Check the commit history with `git log --oneline --graph --all`
+* Check your local and remote branches with `git branch -a`
+
+If you deleted the source branch on GitLab, you can also remove the old local branch:
+
+```bash
+git branch -d add-project-documentation
+git fetch --prune
+```
+
+#### 9. Final Check
+
+At the end of the exercise, you should be able to explain:
+
+* What the difference between a local and a remote repository is
+* Why you created a branch before making changes
+* What a merge request is used for
+* Why your local `main` branch had to be updated after the merge request was merged on GitLab
+
