@@ -278,7 +278,7 @@ After pulling:
 If you deleted the source branch on GitLab, you can also remove the old local branch:
 
 ```bash
-git branch -d add-project-documentation
+git branch -d project-documentation
 git fetch --prune
 ```
 
@@ -291,3 +291,187 @@ At the end of the exercise, you should be able to explain:
 * What a merge request is used for
 * Why your local `main` branch had to be updated after the merge request was merged on GitLab
 
+## 🔴 Section III: Rebase Hell
+
+In this exercise, you will reuse the GitLab project from Section II.
+You will intentionally create a situation where a long-running branch has several commits that conflict with newer changes on `main`.
+Then you will rebase the branch and resolve conflicts commit by commit.
+
+### Task Description
+
+Use your local clone of `gitlab-merge-request-practice`.
+Make sure your local `main` branch is up to date before you begin.
+
+Example commands:
+
+```bash
+git switch main
+git pull origin main
+```
+
+#### 1. Create a Long-Running Branch
+
+Create a new branch called `rebase-experiment`.
+
+On this branch, make three separate commits that all edit the same area of `README.md`.
+
+For example:
+
+* Commit 1: Change the first project description sentence
+* Commit 2: Add two bullet points below `Project Overview`
+* Commit 3: Rewrite one of the bullet points from commit 2
+
+After each change, add and commit the file separately.
+
+Check your result:
+
+```bash
+git log --oneline --graph --all
+```
+
+#### 2. Move Main Forward with a Second Merge Request
+
+Switch back to `main` and create a second branch called `main-update-for-rebase`.
+
+```bash
+git switch main
+git switch -c main-update-for-rebase
+```
+
+Now edit the same area of `README.md` that you changed on `rebase-experiment`.
+Make changes that are different from the changes on your branch.
+
+Create two separate commits on `main-update-for-rebase`.
+
+For example:
+
+* Commit 1: Rewrite the first project description sentence in a different way
+* Commit 2: Add a different bullet list below `Project Overview`
+
+Push the second branch to GitLab.
+
+```bash
+git push -u origin main-update-for-rebase
+```
+
+Create a merge request from `main-update-for-rebase` into `main`.
+Review the changes, merge the merge request, and delete the source branch if GitLab offers this option.
+This moves the remote `main` branch forward without pushing directly to the protected branch.
+
+#### 3. Start the Rebase
+
+Update your local `main` branch so it contains the changes that were merged on GitLab.
+
+```bash
+git switch main
+git pull origin main
+```
+
+Switch back to your long-running branch.
+
+```bash
+git switch rebase-experiment
+```
+
+Rebase it onto the updated `main` branch.
+
+```bash
+git rebase main
+```
+
+Git should stop when it reaches the first conflicting commit.
+This is the beginning of "rebase hell": Git replays your commits one by one, so you may need to resolve several conflicts during one rebase.
+
+#### 4. Resolve Each Conflict
+
+Whenever Git reports a conflict:
+
+* Open the conflicting file
+* Find the conflict markers `<<<<<<<`, `=======`, and `>>>>>>>`
+* Decide what the final version should look like
+* Remove all conflict markers
+* Add the resolved file
+* Continue the rebase
+
+Example commands:
+
+```bash
+git status
+git add README.md
+git rebase --continue
+```
+
+Repeat these steps until the rebase is complete.
+
+If your rebase becomes too confusing, you can stop and return to the branch state before the rebase:
+
+```bash
+git rebase --abort
+```
+
+After aborting, inspect the history and try the rebase again.
+
+#### 5. Inspect the Result
+
+After the rebase has finished, inspect the commit history.
+
+```bash
+git log --oneline --graph --all
+```
+
+Compare the history before and after the rebase.
+
+Answer the following questions in `documentation.md`:
+
+* Which commits were replayed during the rebase?
+* How many conflicts did you need to resolve?
+* Why can rebasing a long-running branch become difficult?
+* How could you avoid this situation in a real project?
+
+Add and commit your answers.
+
+#### 6. Push the Rebased Branch
+
+Push the rebased branch to GitLab.
+
+```bash
+git push -u origin rebase-experiment
+```
+
+If you had already pushed this branch before rebasing, Git would reject a normal push because the rebase rewrites commit history.
+In that case, you would need:
+
+```bash
+git push --force-with-lease origin rebase-experiment
+```
+
+Use `--force-with-lease` only for your own feature branch and only when you understand why the history changed.
+
+#### 7. Create and Merge a Merge Request
+
+Create a merge request from `rebase-experiment` into `main`.
+
+In GitLab:
+
+* Review the final changes carefully
+* Check that the commit history looks linear
+* Merge the merge request into `main`
+* Delete the source branch if GitLab offers this option
+
+Update your local repository afterwards:
+
+```bash
+git switch main
+git pull origin main
+git fetch --prune
+```
+
+#### 8. Final Check
+
+At the end of the exercise, you should be able to explain:
+
+* What `git rebase` does
+* Why rebasing replays commits
+* Why several conflicts can appear during one rebase
+* When `git rebase --abort` is useful
+* Why force pushing after a rebase can be dangerous on shared branches
