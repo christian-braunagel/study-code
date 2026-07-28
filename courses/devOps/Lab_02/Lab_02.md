@@ -291,7 +291,95 @@ At the end of the exercise, you should be able to explain:
 * What a merge request is used for
 * Why your local `main` branch had to be updated after the merge request was merged on GitLab
 
-## 🔴 Section III: Rebase Hell
+## 🟡 Section III: Branching Strategies
+
+In this exercise, you will compare three common branching strategies by creating three separate GitLab projects.
+Each project should use a different strategy: GitHub Flow, Gitflow, and trunk-based development.
+
+### Task Description
+
+Create the following three GitLab projects:
+
+* `branching-github-flow`
+* `branching-gitflow`
+* `branching-trunk-based`
+
+Each project should contain a `README.md` file and should be cloned to your local machine.
+For each project, create the branches that are required for the assigned branching strategy and simulate a small development workflow.
+
+#### 1. Prepare the Projects
+
+For each of the three projects:
+
+* Create a new private GitLab project
+* Initialize the project with a `README.md`
+* Clone the project to your local machine
+* Add a short description of the branching strategy to the `README.md`
+* Commit and push your changes using the workflow expected by the strategy
+
+#### 2. GitHub Flow Project
+
+Use the project `branching-github-flow`.
+
+Your task:
+
+* Set up the repository according to GitHub Flow
+* Create a small change on the correct type of branch
+* Push the branch to GitLab
+* Create a merge request
+* Merge the change back into the main line of development
+* Update your local repository afterwards
+
+#### 3. Gitflow Project
+
+Use the project `branching-gitflow`.
+
+Your task:
+
+* Set up the repository according to Gitflow
+* Simulate the start of a new feature
+* Simulate preparing a release
+* Simulate a small urgent production fix
+* Merge the changes according to the strategy
+* Update your local repository afterwards
+
+#### 4. Trunk-Based Development Project
+
+Use the project `branching-trunk-based`.
+
+Your task:
+
+* Set up the repository according to trunk-based development
+* Create a very small change
+* Keep the change short-lived
+* Integrate the change back into the main line of development quickly
+* Update your local repository afterwards
+
+#### 5. Comparison
+
+Create a file called `branching_strategy_comparison.md` in one of the three projects.
+
+Answer the following questions:
+
+* Which strategy used the fewest long-running branches?
+* Which strategy used the most structured release workflow?
+* Which strategy felt easiest for a small team?
+* Which strategy felt safest for a project with planned releases?
+* What are the risks of using too many long-running branches?
+
+Commit and push your comparison file.
+
+#### 6. Final Check
+
+At the end of the exercise, you should be able to explain:
+
+* The main idea behind GitHub Flow
+* The main idea behind Gitflow
+* The main idea behind trunk-based development
+* How the branch structure affects collaboration
+* Why teams should agree on one branching strategy before development starts
+
+## 🔴 Section IV: Rebase Hell
 
 In this exercise, you will reuse the GitLab project from Section II.
 You will intentionally create a situation where a long-running branch has several commits that conflict with newer changes on `main`.
