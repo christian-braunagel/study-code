@@ -145,7 +145,7 @@ You will create backlog items in GitLab or GitHub, take turns acting as Product 
 
 Form teams of at least four people.
 Each team receives the same product vision and the same initial backlog.
-The backlog is intentionally incomplete: the stories are poorly written, not ordered, and have no story points.
+The backlog is intentionally incomplete: the stories are just poorly written titles, not ordered, and have no story points.
 
 #### Product Vision
 
@@ -271,13 +271,14 @@ Use this estimation scale:
 
 If a story feels larger than `13`, split it into smaller stories or write down why it is too unclear.
 
+Repeat the process for all stories in the backlog until every story has been improved and estimated.
+
 #### 5. Short Retrospective
 
 Perform a three-minute retrospective as a team.
 
 Discuss these questions:
 
-* Was it easy to transfer the rough backlog into GitLab or GitHub?
 * Was it easy to turn rough backlog items into good user stories?
 * Was the product vision clear enough?
 * Which backlog items were hardest to understand?
