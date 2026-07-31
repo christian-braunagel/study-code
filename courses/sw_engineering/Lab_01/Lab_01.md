@@ -135,3 +135,165 @@ The presentation should explain:
 * What your team learned about planning, iteration, and retrospectives
 
 No slides are required. A short oral explanation is sufficient.
+
+## 🟡 Section III: Scrum Backlog Refinement Game
+
+In this exercise, you will practice several Scrum-related activities by working with an unclear product vision and an unfinished initial backlog.
+You will create backlog items in GitLab or GitHub, take turns acting as Product Owner and Developers, improve backlog items, discuss uncertainty, and estimate work using planning poker.
+
+### Task Description
+
+Form teams of at least four people.
+Each team receives the same product vision and the same initial backlog.
+The backlog is intentionally incomplete: the stories are poorly written, not ordered, and have no story points.
+
+#### Product Vision
+
+Your team is building a mobile app called `Smart Fridge`.
+The app should help households reduce food waste and plan grocery shopping.
+Users should be able to track food items in their fridge, see expiry dates, receive reminders, create shopping lists, and get simple recipe ideas based on ingredients they already have.
+The first version should focus on helping users know what food they have at home and what should be used soon.
+
+#### Initial Backlog
+
+The following backlog items are intentionally rough.
+Do not fix them before the exercise starts.
+
+* Add food
+* Expiry warnings
+* Shopping list
+* Login
+* Scan receipt
+* Fridge overview
+* Recipe ideas
+* Remove eaten food
+* Notifications
+* Share fridge with family
+* Search food
+* Categories
+* Dark mode
+* Barcode scan
+* Weekly meal plan
+* Low stock reminder
+* Favorite recipes
+* Settings
+* Statistics
+* Sync between phones
+
+#### 1. Create the Backlog in GitLab or GitHub
+
+Create a new project or repository for your team in GitLab or GitHub.
+Use issues, project items, or another backlog feature available in your platform.
+
+Your task:
+
+* Create one issue or item for each rough backlog item
+* Use the rough backlog item text as the initial title
+* Do not rewrite the items yet
+* Make sure every team member can access the backlog
+* Keep the backlog unordered at first
+
+#### 2. Play Product Owner: Order the Backlog
+
+Read the product vision and the complete backlog as a team.
+Then play the role of the Product Owner together.
+
+Your task:
+
+* Discuss which backlog items seem most important for the first version
+* Move the most important items to the top in GitLab or GitHub
+* Move less important or unclear items lower
+* Be prepared to explain your top five priorities
+
+Do not estimate the items yet.
+Focus only on priority and product value.
+
+#### 3. Play Product Owner and Developers: Improve Stories
+
+Starting from the top of the ordered backlog, each team member takes one backlog item.
+
+For your selected item:
+
+* Improve the item into a clearer user story in GitLab or GitHub
+* Add at least one short acceptance criterion
+* Add open questions, uncertainties, or assumptions
+
+Use the following format:
+
+```text
+As a ...
+I want ...
+So that ...
+
+Acceptance criterion:
+...
+
+Open questions:
+...
+```
+
+After preparing your story, present it to your team.
+While presenting, you play the Product Owner.
+
+The rest of the team plays the Developers and should check:
+
+* Is the story understandable?
+* Is the user or target group clear?
+* Is the value clear?
+* Is the acceptance criterion testable?
+* Are there unanswered questions or hidden assumptions?
+* Is the story small enough to be discussed and estimated?
+
+Improve the story together until the team agrees that it is good enough for estimation.
+Update the issue or item with the improved version.
+
+#### 4. Planning Poker
+
+Estimate the improved stories with planning poker.
+The person who prepared and presented the story acts as Product Owner for that story and does not estimate it.
+All other team members estimate as Developers.
+
+For each story:
+
+* The Product Owner reads the story again
+* Developers ask clarification questions
+* Developers estimate silently
+* Developers reveal their estimates at the same time
+* If estimates differ strongly, discuss the reasons
+* Estimate again until the team reaches an agreement
+* Add the final story point estimate to the issue or item
+
+Use this estimation scale:
+
+```text
+1, 2, 3, 5, 8, 13
+```
+
+If a story feels larger than `13`, split it into smaller stories or write down why it is too unclear.
+
+#### 5. Short Retrospective
+
+Perform a three-minute retrospective as a team.
+
+Discuss these questions:
+
+* Was it easy to transfer the rough backlog into GitLab or GitHub?
+* Was it easy to turn rough backlog items into good user stories?
+* Was the product vision clear enough?
+* Which backlog items were hardest to understand?
+* Was it difficult to agree on priorities?
+* Was it difficult to agree on story points?
+* What would help the team write better stories next time?
+
+#### 6. Short Presentation
+
+Choose one person from your team to briefly present your result.
+
+The presentation should explain:
+
+* Which backlog item your team placed at the highest priority
+* One improved user story created by your team
+* The story point estimate for that story
+* One difficulty your team noticed during refinement or estimation
+
+No slides are required. A short oral explanation is sufficient.
