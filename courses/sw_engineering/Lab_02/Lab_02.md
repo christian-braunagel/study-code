@@ -48,7 +48,7 @@ Choose one person from your group to briefly present your result.
 
 The presentation should explain:
 
-* Five functional requirements your group agreed on
+* The functional requirements your group agreed on
 * The non-functional requirements your group included
 * One example of a requirement refined across the different levels
 * One question or ambiguity your group had to clarify
