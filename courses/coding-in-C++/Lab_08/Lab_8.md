@@ -60,7 +60,81 @@ Answer as comments in the code:
 
 ---
 
-## 🟢 Section II: Adapter Pattern - Legacy Payment Terminal
+## 🟢 Section II: Factory Pattern - Notification Creator
+
+In this section, you will practice the **Factory Pattern**.
+
+The factory pattern is useful when your program should create objects based on a choice, but the rest of the program should work with a common interface instead of concrete classes.
+
+For example, a notification system may support different message types such as e-mail, SMS, or push notifications. The code that sends the notification should not need to know which concrete class was created.
+
+---
+
+## Task Description
+
+A notification system expects all notification types to use the following interface:
+
+```cpp
+class Notification
+{
+public:
+    virtual ~Notification() = default;
+
+    virtual void send(const std::string& message) const = 0;
+};
+```
+
+Create two concrete notification classes:
+
+```cpp
+class EmailNotification : public Notification
+{
+public:
+    void send(const std::string& message) const override
+    {
+        std::cout << "Email: " << message << "\n";
+    }
+};
+
+class SmsNotification : public Notification
+{
+public:
+    void send(const std::string& message) const override
+    {
+        std::cout << "SMS: " << message << "\n";
+    }
+};
+```
+
+Your task is to write a factory function that creates the correct notification object based on a string.
+
+Your tasks:
+
+1. Create a function `createNotification(const std::string& type)`.
+2. The function should return a `std::unique_ptr<Notification>`.
+3. If `type` is `"email"`, return an `EmailNotification`.
+4. If `type` is `"sms"`, return an `SmsNotification`.
+5. If the type is unknown, return `nullptr`.
+6. Write a function `notifyUser(Notification& notification, const std::string& message)`.
+7. Inside `notifyUser(...)`, call `notification.send(message)`.
+8. In `main()`, use the factory function to create a notification object and pass it to `notifyUser(...)`.
+
+Expected behavior:
+
+- `createNotification("email")` should create an `EmailNotification`.
+- `createNotification("sms")` should create an `SmsNotification`.
+- Unknown notification types should be handled without crashing.
+
+Questions to answer in comments:
+
+- What is the common interface?
+- Which classes are concrete products?
+- Where is the factory?
+- Why should `notifyUser(...)` depend on `Notification` instead of `EmailNotification` or `SmsNotification` directly?
+
+---
+
+## 🟢 Section III: Adapter Pattern - Legacy Payment Terminal
 
 In this section, you will practice the **Adapter Pattern**.
 
