@@ -233,6 +233,53 @@ For example, you may consider:
 No presentation is required for this section.
 
 
+## 🟢 Section V: Getting Started with GitLab Issues
+
+In this short exercise, you will get familiar with GitLab Issues as a lightweight tool for documenting and discussing requirements.
+The goal is to explore the issue interface, create one or two simple requirements, and notice which features could support requirements engineering work.
+
+### Task Description
+
+Work individually or at max in pairs.
+This task should take about 10 to 15 minutes.
+If you need orientation, use the GitLab documentation on [Issues](https://docs.gitlab.com/user/project/issues/).
+
+#### 1. Explore GitLab Issues
+
+Open a GitLab project and take a few minutes to look around the Issues area.
+
+Focus especially on:
+
+* Where issues are listed
+* How new issues can be created
+* Where descriptions, labels, assignees, and comments can be added
+* Which views or filters seem useful for requirements engineering
+
+#### 2. Create Requirements
+
+Create one or two issues for requirements of the alarm-clock application from Section III.
+
+For each issue:
+
+* Give it a clear title
+* Add a short description
+* Decide whether it describes a functional or non-functional requirement
+* Add a suitable label if labels are available in your project
+
+#### 3. Short Reflection
+
+Briefly note two or three GitLab Issues features that could be helpful when working with requirements.
+
+For example, you may consider:
+
+* Using labels to classify requirements
+* Discussing open questions in comments
+* Assigning issues to team members
+* Tracking status with issue boards or milestones
+
+No presentation is required for this section.
+
+
 ## 🟡 Section VI: Scrum Backlog Refinement Game
 
 In this exercise, you will practice several Scrum-related activities by working with an unclear product vision and an unfinished initial backlog.
