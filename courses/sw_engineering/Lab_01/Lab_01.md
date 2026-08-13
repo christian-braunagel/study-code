@@ -186,6 +186,53 @@ The presentation should explain:
 No need to prepare slides for this presentation. A short oral explanation is sufficient.
 
 
+## 🟢 Section IV: Getting Started with Enterprise Architect
+
+In this short exercise, you will get familiar with Enterprise Architect as a tool for documenting requirements.
+The goal is to explore the interface, create one or two simple requirements, and notice which features could support requirements engineering work.
+
+### Task Description
+
+Work individually or at max in pairs.
+This task should take about 10 to 15 minutes.
+If you need orientation, use the Enterprise Architect User Guide pages on [Getting Started](https://sparxsystems.org/enterprise_architect_user_guide/17.1/getting_started/ea_getting_started.html) and [Creating and Viewing Requirements](https://sparxsystems.com/enterprise_architect_user_guide/17.1/modeling_domains/creating_and_viewing_requirements.html).
+
+#### 1. Explore the Tool
+
+Open Enterprise Architect and take a few minutes to look around.
+
+Focus especially on:
+
+* Where projects, packages, and elements are shown
+* How new elements can be created
+* Where requirement details can be entered
+* Which views or diagrams seem useful for requirements engineering
+
+#### 2. Create Requirements
+
+Create one or two requirements for the alarm-clock application from Section III.
+
+For each requirement:
+
+* Give it a clear name
+* Add a short description
+* Decide whether it is functional or non-functional
+* Save it in a suitable package or model structure
+
+#### 3. Short Reflection
+
+Briefly note two or three Enterprise Architect features that could be helpful when working with requirements.
+
+For example, you may consider:
+
+* Organizing requirements in packages
+* Linking requirements to other model elements
+* Adding notes, properties, or metadata
+* Creating diagrams to show relationships
+
+No presentation is required for this section.
+
+
 ## 🟡 Section VI: Scrum Backlog Refinement Game
 
 In this exercise, you will practice several Scrum-related activities by working with an unclear product vision and an unfinished initial backlog.
