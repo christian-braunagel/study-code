@@ -30,6 +30,8 @@ Then select two of your requirements and refine each of them on different levels
 * System level: what the complete alarm-clock system must provide
 * Software level: what the software must do to support the system behavior
 
+**Important**: Document your requirements in a text file, markdown file, or any other format that can be shared without any special software.
+
 #### 2. Group Discussion
 
 Gather in a group of three people.
