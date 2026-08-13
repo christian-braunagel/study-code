@@ -1,12 +1,12 @@
-# Lab 1: Process Models
+# Lab 1: Process Models and Requirements Engineering
 
-This lab focuses on applying the knowledge of process models in software engineering.
+This lab focuses on applying the knowledge of process models as well as helps you to practice the concepts of requirements engineering.
 
-🟢 __Simple__: A simple coding task that usually guides you step by step through the process and focuses on learning the basics. It should not take more than 15min to finish it. 
+🟢 __Simple__: A guided software engineering activity that introduces the basic concepts step by step. It should not take more than 15 - 20 minutes to finish.
 
-🟡 __Moderate__: A coding task that usually states a moderate problem to test your understanding and transfer skills from syntax to real-world applications. These tasks can be solved in about 30mins depending on your knowledge.
+🟡 __Moderate__: A software engineering activity that asks you to apply the concepts to a realistic team or project situation. These tasks can usually be completed in about 30 - 45 minutes, depending on your prior knowledge.
 
-🔴 __Complex__: Quite a difficult or lengthy coding task that requires you to use the acquired knowledge of the previous tasks in a broader context or project. Such tasks might take up to a few hours to solve them.
+🔴 __Complex__: A more demanding or longer software engineering activity that requires you to combine concepts, make decisions as a team, and work through a broader project context. Such tasks might take up to a few hours to complete.
 
 ## 🟢 Section I: Agile Principles
 
@@ -136,7 +136,57 @@ The presentation should explain:
 
 No slides are required. A short oral explanation is sufficient.
 
-## 🟡 Section III: Scrum Backlog Refinement Game
+## 🟢 Section III: Writing and Refining Requirements
+
+### Task Description
+
+In this exercise, you will practice writing requirements for a simple alarm-clock application.
+The goal is to describe what the alarm clock should do, how well it should work, and how requirements can become more detailed across different levels of a system.
+
+#### 1. Individual Preparation
+
+Imagine an alarm-clock application for a smartphone or small digital device.
+
+Write a first set of requirements for this application:
+
+* Write at least 8 functional requirements
+* Write at least 2 non-functional requirements
+
+Then select two of your requirements and refine each of them on different levels:
+
+* User level: what the user wants to achieve
+* System level: what the complete alarm-clock system must provide
+* Software level: what the software must do to support the system behavior
+
+**Important**: Document your requirements in a text file, markdown file, or any other format that can be shared without any special software.
+
+#### 2. Group Discussion
+
+Gather in a group of three people.
+
+In your group:
+
+* Each person briefly presents their functional and non-functional requirements
+* Compare requirements that describe similar behavior and merge duplicates
+* Clarify open questions, such as assumptions about time zones, snooze behavior, volume, vibration, or alarm repetition
+* Create one shared requirements document for your group
+* Include two refined requirements in the shared document, each shown on user, system, and software level
+
+#### 3. Short Presentation
+
+Choose one person from your group to briefly present your result.
+
+The presentation should explain:
+
+* The functional requirements your group agreed on
+* The non-functional requirements your group included
+* One example of a requirement refined across the different levels
+* One question or ambiguity your group had to clarify
+
+No need to prepare slides for this presentation. A short oral explanation is sufficient.
+
+
+## 🟡 Section VI: Scrum Backlog Refinement Game
 
 In this exercise, you will practice several Scrum-related activities by working with an unclear product vision and an unfinished initial backlog.
 You will create backlog items in GitLab or GitHub, take turns acting as Product Owner and Developers, improve backlog items, discuss uncertainty, and estimate work using planning poker.
