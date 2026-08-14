@@ -351,7 +351,7 @@ Your task:
 Do not estimate the items yet.
 Focus only on priority and product value.
 
-#### 3. Play Product Owner and Developers: Improve Stories (20 minutes)
+#### 3. Play Product Owner and Developers: Improve Stories (25 minutes)
 
 Starting from the top of the ordered backlog, each team member takes one backlog item.
 
@@ -390,7 +390,7 @@ The rest of the team plays the Developers and should check:
 Improve the story together until the team agrees that it is good enough for estimation.
 Update the issue or item with the improved version.
 
-#### 4. Planning Poker (10 minutes)
+#### 4. Planning Poker (15 minutes)
 
 Estimate the improved stories with planning poker.
 The person who prepared and presented the story acts as Product Owner for that story and does not estimate it.
