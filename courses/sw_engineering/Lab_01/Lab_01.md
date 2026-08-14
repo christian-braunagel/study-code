@@ -280,7 +280,7 @@ For example, you may consider:
 No presentation is required for this section.
 
 
-## 🟡 Section VI: Scrum Backlog Refinement Game
+## 🔴 Section VI: Scrum Backlog Refinement Game
 
 In this exercise, you will practice several Scrum-related activities by working with an unclear product vision and an unfinished initial backlog.
 You will create backlog items in GitLab or GitHub, take turns acting as Product Owner and Developers, improve backlog items, discuss uncertainty, and estimate work using planning poker.
@@ -324,20 +324,19 @@ Do not fix them before the exercise starts.
 * Statistics
 * Sync between phones
 
-#### 1. Create the Backlog in GitLab or GitHub
+#### 1. Create the Backlog in GitLab (10 minutes)
 
-Create a new project or repository for your team in GitLab or GitHub.
-Use issues, project items, or another backlog feature available in your platform.
+Create a new project or repository for your team in GitLab.
 
 Your task:
 
-* Create one issue or item for each rough backlog item
+* Create one issue for each rough backlog item
 * Use the rough backlog item text as the initial title
 * Do not rewrite the items yet
 * Make sure every team member can access the backlog
 * Keep the backlog unordered at first
 
-#### 2. Play Product Owner: Order the Backlog
+#### 2. Play Product Owner: Order the Backlog (10 minutes)
 
 Read the product vision and the complete backlog as a team.
 Then play the role of the Product Owner together.
@@ -345,21 +344,21 @@ Then play the role of the Product Owner together.
 Your task:
 
 * Discuss which backlog items seem most important for the first version
-* Move the most important items to the top in GitLab or GitHub
+* Move the most important items to the top in GitLab
 * Move less important or unclear items lower
 * Be prepared to explain your top five priorities
 
 Do not estimate the items yet.
 Focus only on priority and product value.
 
-#### 3. Play Product Owner and Developers: Improve Stories
+#### 3. Play Product Owner and Developers: Improve Stories (20 minutes)
 
 Starting from the top of the ordered backlog, each team member takes one backlog item.
 
 For your selected item:
 
-* Improve the item into a clearer user story in GitLab or GitHub
-* Add at least one short acceptance criterion
+* Improve the item into a clearer user story in GitLab
+* Add acceptance criteria
 * Add open questions, uncertainties, or assumptions
 
 Use the following format:
@@ -372,7 +371,7 @@ So that ...
 Acceptance criterion:
 ...
 
-Open questions:
+Open questions or additional information:
 ...
 ```
 
@@ -391,7 +390,7 @@ The rest of the team plays the Developers and should check:
 Improve the story together until the team agrees that it is good enough for estimation.
 Update the issue or item with the improved version.
 
-#### 4. Planning Poker
+#### 4. Planning Poker (10 minutes)
 
 Estimate the improved stories with planning poker.
 The person who prepared and presented the story acts as Product Owner for that story and does not estimate it.
@@ -417,7 +416,7 @@ If a story feels larger than `13`, split it into smaller stories or write down w
 
 Repeat the process for all stories in the backlog until every story has been improved and estimated.
 
-#### 5. Short Retrospective
+#### 5. Short Retrospective (10 minutes)
 
 Perform a three-minute retrospective as a team.
 
@@ -430,7 +429,7 @@ Discuss these questions:
 * Was it difficult to agree on story points?
 * What would help the team write better stories next time?
 
-#### 6. Short Presentation
+#### 6. Short Presentation (5 minutes)
 
 Choose one person from your team to briefly present your result.
 
