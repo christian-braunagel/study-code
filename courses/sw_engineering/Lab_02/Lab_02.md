@@ -100,3 +100,49 @@ Extend your diagram with alternative paths.
 * The student's account check fails
 
 Use UML combined fragments.
+
+
+## 🟢 Section III: Layered Architecture
+
+In this exercise, you will apply the idea of layered architecture to a familiar system.
+The goal is to decide which responsibilities belong in which layer and to reason about the dependencies between layers.
+
+### Task Description
+
+Design a layered architecture for the following system.
+
+#### System: Simple Online Shop
+
+You are designing a simple online shop.
+The system must:
+
+* Display products with current availability
+* Allow users to place orders
+* Calculate prices, discounts, tax, and shipping costs
+* Validate whether enough stock is available before confirming an order
+* Store products, orders, customers, and payments in a database
+* Send an order confirmation after successful checkout
+* Allow administrators to update product data
+
+#### 1. Design the Layers
+
+Create a layered architecture.
+For each layer, describe its main responsibility and assign the features above to the correct layer.
+
+E.g.:
+* Which layer should contain business rules such as discount calculation and stock validation?
+* Which layer should communicate with the database?
+* ...
+
+#### 2. Draw Dependencies
+
+Draw the allowed dependencies between the layers.
+
+#### 3. Reflect on the Design
+
+Answer the following questions:
+
+* Would you choose closed or open layering?
+* What is one benefit of your design?
+* What is one drawback of your design?
+* A teammate suggests that the product page should directly query the database because it would be faster. Do you agree? Explain your decision using layered architecture.
