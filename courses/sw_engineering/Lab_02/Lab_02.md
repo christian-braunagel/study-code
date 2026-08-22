@@ -9,7 +9,54 @@ This lab is designed to help you understand the concepts of software architectur
 🔴 __Complex__: A more demanding or longer software engineering activity that requires you to combine concepts, make decisions as a team, and work through a broader project context. Such tasks might take up to a few hours to complete.
 
 
-## 🟢 Section I: UML Sequence Diagrams
+## 🟢 Section I: UML Use-Case Diagrams
+
+In this exercise, you will practice creating a UML use-case diagram from a short system description.
+The goal is to identify actors and use-cases, and to model meaningful `include` and `extend` relationships.
+
+### Task Description
+
+Model the following system as a UML use-case diagram in Draw.io.
+
+#### System: Online Pizza Ordering
+
+A small pizza restaurant wants to offer an online ordering system.
+Customers can browse the menu, customize a pizza, place an order, pay online, and track the order status.
+The kitchen staff prepares accepted orders, and a delivery driver delivers orders that are marked for delivery.
+
+The system should support the following behavior:
+
+* A customer can browse the menu without logging in.
+* A customer must log in before placing an order.
+* When placing an order, the customer must choose either pickup or delivery.
+* Every order must include selecting items from the menu and confirming the order summary.
+* If the customer chooses delivery, the system also asks for a delivery address.
+* The customer may optionally apply a discount code during checkout.
+* The customer pays online after confirming the order.
+* Kitchen staff can view new orders and mark an order as being prepared.
+* Kitchen staff can mark an order as ready.
+* A delivery driver can view orders ready for delivery and mark them as delivered.
+* A customer can track the current order status.
+
+#### 1. Identify Actors
+
+Identify all external actors that interact with the online ordering system.
+
+#### 2. Identify Use-Cases
+
+List the main use-cases that should appear in the diagram.
+
+#### 3. Add Relationships
+
+Create the use-case diagram and include at least:
+
+* Two `include` relationships for behavior that is always part of another use-case
+* Two `extend` relationships for optional or conditional behavior
+
+Label the actors, use-cases, and relationships clearly.
+
+
+## 🟢 Section II: UML Sequence Diagrams
 
 In this exercise, you will practice creating a UML sequence diagram from textual requirements.
 The goal is to identify the participating actors and system components, model the order of messages, and show important decisions in the interaction.
@@ -54,3 +101,48 @@ Extend your diagram with alternative paths.
 
 Use UML combined fragments.
 
+
+## 🟢 Section III: Layered Architecture
+
+In this exercise, you will apply the idea of layered architecture to a familiar system.
+The goal is to decide which responsibilities belong in which layer and to reason about the dependencies between layers.
+
+### Task Description
+
+Design a layered architecture for the following system.
+
+#### System: Simple Online Shop
+
+You are designing a simple online shop.
+The system must:
+
+* Display products with current availability
+* Allow users to place orders
+* Calculate prices, discounts, tax, and shipping costs
+* Validate whether enough stock is available before confirming an order
+* Store products, orders, customers, and payments in a database
+* Send an order confirmation after successful checkout
+* Allow administrators to update product data
+
+#### 1. Design the Layers
+
+Create a layered architecture.
+For each layer, describe its main responsibility and assign the features above to the correct layer.
+
+E.g.:
+* Which layer should contain business rules such as discount calculation and stock validation?
+* Which layer should communicate with the database?
+* ...
+
+#### 2. Draw Dependencies
+
+Draw the allowed dependencies between the layers.
+
+#### 3. Reflect on the Design
+
+Answer the following questions:
+
+* Would you choose closed or open layering?
+* What is one benefit of your design?
+* What is one drawback of your design?
+* A teammate suggests that the product page should directly query the database because it would be faster. Do you agree? Explain your decision using layered architecture.
