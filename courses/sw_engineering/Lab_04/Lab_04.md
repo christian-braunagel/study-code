@@ -1,6 +1,6 @@
-# Lab 2: Architectural Design and Software Detailed Design
+# Lab 4: Software Evolution and Retirement
 
-This lab is designed to help you understand the concepts of software architecture and detailed design.
+This lab is designed to help you understand how software systems evolve over time and how retirement decisions should be planned and executed.
 
 🟢 __Simple__: A guided software engineering activity that introduces the basic concepts step by step. It should not take more than 15 - 20 minutes to finish.
 
@@ -9,50 +9,70 @@ This lab is designed to help you understand the concepts of software architectur
 🔴 __Complex__: A more demanding or longer software engineering activity that requires you to combine concepts, make decisions as a team, and work through a broader project context. Such tasks might take up to a few hours to complete.
 
 
-## 🟢 Section I: UML Use-Case Diagrams
+## 🟡 Section I: Case Study - The Retirement of FleetTrack
 
-In this exercise, you will practice creating a UML use-case diagram from a short system description.
-The goal is to identify actors and use-cases, and to model meaningful `include` and `extend` relationships.
+In this exercise, you will analyze a case study about software evolution and retirement.
+The goal is to identify problems that occurred during different phases of the system's life cycle and propose better alternatives.
 
 ### Task Description
 
-Model the following system as a UML use-case diagram in Draw.io.
+Read the following case study carefully.
+The mistakes are not marked explicitly, so you need to decide which decisions were problematic and why.
 
-#### System: Online Pizza Ordering
+#### Scenario: The Retirement of FleetTrack
 
-A small pizza restaurant wants to offer an online ordering system.
-Customers can browse the menu, customize a pizza, place an order, pay online, and track the order status.
-The kitchen staff prepares accepted orders, and a delivery driver delivers orders that are marked for delivery.
+FleetTrack is a logistics management system used by a transportation company to plan vehicle routes, assign drivers, track deliveries, and generate invoices.
+The system was introduced 14 years ago and has continuously evolved since then.
 
-The system should support the following behavior:
+Over the years, new customer requirements were added directly to the existing architecture.
+Several modules grew significantly, and developers increasingly complained that changes in the route-planning module caused unexpected problems in invoicing and reporting.
 
-* A customer can browse the menu without logging in.
-* A customer must log in before placing an order.
-* When placing an order, the customer must choose either pickup or delivery.
-* Every order must include selecting items from the menu and confirming the order summary.
-* If the customer chooses delivery, the system also asks for a delivery address.
-* The customer may optionally apply a discount code during checkout.
-* The customer pays online after confirming the order.
-* Kitchen staff can view new orders and mark an order as being prepared.
-* Kitchen staff can mark an order as ready.
-* A delivery driver can view orders ready for delivery and mark them as delivered.
-* A customer can track the current order status.
+Management monitored the evolution of FleetTrack primarily using two metrics:
 
-#### 1. Identify Actors
+* Lines of Code (LOC): increasing LOC was interpreted as evidence that the system was actively being developed.
+* Number of released features: a high number of new features per year was considered an indicator of good software quality.
 
-Identify all external actors that interact with the online ordering system.
+No other systematic measurements were collected.
 
-#### 2. Identify Use-Cases
+After several years, releases became noticeably slower.
+The average implementation time for new features increased, and customers reported more regressions after updates.
+Developers proposed refactoring several highly coupled modules and improving the automated regression tests.
+Management rejected the proposal because neither activity would directly deliver new functionality and business value.
 
-List the main use-cases that should appear in the diagram.
+Two years later, management decided that FleetTrack had become too expensive to maintain.
+A new cloud-based system, CloudFleet, was selected as its replacement.
+Because FleetTrack's architecture and technical documentation were outdated and customers requested additional features as soon as possible, management decided against a gradual migration and scheduled a complete replacement three months later.
 
-#### 3. Add Relationships
+The retirement date was announced internally one week before migration.
+Several departments discovered that CloudFleet did not support specialized reporting functions they still relied on.
+Nevertheless, management decided to continue with the planned date because the contract for the old hosting infrastructure had already been terminated.
 
-Create the use-case diagram and include at least:
+Customer and driver data were exported from FleetTrack and imported into CloudFleet.
+The team verified that the number of migrated database records matched the number in the old database.
+No further validation of the migrated data was performed.
 
-* Two `include` relationships for behavior that is always part of another use-case
-* Two `extend` relationships for optional or conditional behavior
+On the migration weekend, FleetTrack was deactivated.
+On Monday morning, users discovered that some historical delivery records were associated with incorrect customers and that several old invoices could no longer be accessed.
+The company also discovered that its finance department was legally required to retain some historical records for several more years.
 
-Label the actors, use-cases, and relationships clearly.
+The FleetTrack servers were nevertheless deleted two weeks later to reduce infrastructure costs.
+Source code and database backups existed, but nobody had documented which software version, database version, configuration files, external libraries, and deployment environment would be required to restore the system.
 
+CloudFleet remained in operation, and missing functionality was implemented during the following months.
+No formal post-retirement review was performed.
 
+#### Task
+
+Analyze the evolution and retirement of FleetTrack.
+Identify the mistakes made by the organization and propose how each should have been handled differently.
+
+Use the following structure for your answer:
+
+| Phase | Mistake / Problem | Why is it problematic? | Better approach |
+| --- | --- | --- | --- |
+| Software Evolution | | | |
+| Decision to Retire | | | |
+| Migration & Retirement | | | |
+| After Retirement | | | |
+
+You may add more than one row per phase.
