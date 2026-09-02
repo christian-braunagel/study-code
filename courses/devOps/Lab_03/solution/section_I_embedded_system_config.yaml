@@ -1,0 +1,26 @@
+device:
+  name: Temperature Control Unit
+  version: 1.0.0
+  manufacturer: Embedded Systems Lab
+  active: true
+  microcontroller:
+    type: STM32F103
+    clock_frequency_mhz: 72
+    ram: 20 KB
+    watchdog_enabled: true
+  sensors:
+    - name: Temperature Sensor
+      type: temperature
+      unit: Celsius
+      calibrated: true
+    - name: Supply Voltage Sensor
+      type: voltage
+      unit: Volt
+      calibrated: false
+  leds:
+    - color: green
+      function: system status
+      enabled: true
+    - color: red
+      function: error warning
+      enabled: true
