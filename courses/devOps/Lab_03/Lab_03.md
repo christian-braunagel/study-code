@@ -197,102 +197,110 @@ Add short explanations to `docker_notes.md`:
 - What does `-d` do?
 - Why should stopped containers be removed when they are no longer needed?
 
-### Final Check
 
-At the end of this exercise, you should be able to explain:
+## 🟡 Section III: Create a Dockerfile and Build a First Image
 
-- What Docker is used for
-- What an image is
-- What a container is
-- How to start, list, stop, and remove containers
-- How port mapping connects a container to your local machine
-
-## 🟡 Section III: Describe a Container Setup with YAML
-
-In this exercise, you will combine YAML and Docker by writing a Docker Compose file.
-Docker Compose uses YAML to describe one or more containers that belong to the same application.
+In this exercise, you will create your first own Docker image.
+The image will contain a small C++ program that simulates an embedded telemetry check.
 
 ### Task Description
 
 Extend the `docker-basics` project folder.
-Create a file called `compose.yaml`.
-The file should describe a small web server setup based on nginx.
+Create a new folder inside it called `embedded-telemetry`.
+Inside `embedded-telemetry`, create the following files:
 
-### 1. Create a Compose File
+- `main.cpp`
+- `Dockerfile`
 
-Your `compose.yaml` should contain:
+The goal is to build a Docker image that compiles and runs the C++ program inside a container.
 
-- one service called `web`
-- the image `nginx:latest`
-- a container name called `yaml-docker-web`
-- a port mapping from local port `8080` to container port `80`
-- a restart policy of `unless-stopped`
+### 1. Create a Small C++ Program
 
-Use the following structure as orientation, but complete it yourself:
+Create `main.cpp`.
+The program should print a short status report for an embedded device.
 
-```yaml
-services:
-  web:
-    image: ...
-    container_name: ...
-    ports:
-      - ...
-    restart: ...
-```
+Your program should print the following information:
 
-### 2. Start the Compose Project
-
-Run the project with:
-
-```bash
-docker compose up -d
-```
-
-Open your browser and navigate to:
+Example output:
 
 ```text
-http://localhost:8080
+Device: Temperature Control Unit
+Firmware: 1.0.0
+Temperature: 23.5 C
+Voltage: 3.3 V
+Status: OK
 ```
 
-### 3. Inspect the Running Setup
+### 2. Create a Dockerfile
 
-Use the following commands:
+Create a `Dockerfile` with the following requirements:
+
+- use a C++ compiler image as the base image
+- create a working directory inside the image
+- copy `main.cpp` into the image
+- compile the program with `g++`
+- run the compiled program when the container starts
+
+### 3. Build the Docker Image
+
+Build your image from inside the `embedded-telemetry` folder.
 
 ```bash
-docker compose ps
-docker compose logs
+docker build -t embedded-telemetry:1.0 .
+```
+
+After the build, list your local images:
+
+```bash
 docker image ls
-docker container ls
 ```
 
 Add short answers to `docker_notes.md`:
 
-- Which service is running?
-- Which image does the service use?
-- Which local port is connected to the container?
-- Which part of the YAML file controls the port mapping?
+- What does the `-t embedded-telemetry:1.0` option do?
+- Which base image did Docker download or reuse?
+- What is the difference between the Dockerfile and the image?
 
-### 4. Stop and Clean Up
+### 4. Run Your Own Image
 
-Stop the Compose project:
+Run a container from your image:
 
 ```bash
-docker compose down
+docker run --name telemetry-test embedded-telemetry:1.0
 ```
 
-Check that the container has been removed:
+Then inspect the container list:
 
 ```bash
 docker container ls -a
 ```
 
+Add short answers to `docker_notes.md`:
+
+- What output did your program print?
+- Why did the container stop after the program finished?
+- Which command in the Dockerfile defines what runs when the container starts?
+
+### 5. Clean Up
+
+Remove the stopped container:
+
+```bash
+docker rm telemetry-test
+```
+
+Optional: remove the image when you no longer need it:
+
+```bash
+docker image rm embedded-telemetry:1.0
+```
+
 ### Final Check
 
 At the end of this exercise, you should be able to explain:
 
-- Why Docker Compose files are written in YAML
-- What a service is in a Compose file
-- How YAML indentation affects Docker Compose
-- How `docker run` and `docker compose up` are related
-- How to stop and remove a Compose project
-
+- What a Dockerfile is
+- How a Dockerfile becomes a Docker image
+- What the instructions `FROM`, `WORKDIR`, `COPY`, `RUN`, and `CMD` do
+- How to build an image with `docker build`
+- How to run your own image with `docker run`
