@@ -29,11 +29,21 @@ The option `-d` starts the container in detached mode, so it runs in the backgro
 
 Stopped containers should be removed when they are no longer needed because they can make the Docker environment harder to inspect and maintain.
 
-## Docker Compose
+## Dockerfile and First Own Image
 
-The Compose service `web` uses the image `nginx:latest`.
-The local port `8080` is connected to container port `80`.
-This is controlled by the `ports` section in `compose.yaml`.
+The option `-t embedded-telemetry:1.0` gives the image a name and a version tag.
+In this example, Docker uses `gcc:latest` as the base image because the C++ compiler is needed inside the image.
 
-Docker Compose files are written in YAML because YAML is readable and supports nested configuration structures.
-The `services` section describes the containers that belong to the application.
+A Dockerfile is the recipe that describes how the image is built.
+The image is the built result that can be used to start containers.
+
+The container prints the embedded telemetry status and then stops because the C++ program finishes.
+The `CMD` instruction defines which command runs when the container starts.
+
+Important Dockerfile instructions:
+
+- `FROM` selects the base image.
+- `WORKDIR` sets the working directory inside the image.
+- `COPY` copies files from the project folder into the image.
+- `RUN` executes a command while the image is being built.
+- `CMD` defines the default command for a container started from the image.
