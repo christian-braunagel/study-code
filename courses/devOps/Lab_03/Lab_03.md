@@ -4,11 +4,11 @@ This lab focuses on two important DevOps building blocks: writing structured con
 
 All sections of this lab are based on the following levels of difficulty:
 
-🟢 __Simple__: A guided task that focuses on learning the basics. It should not take more than 15 minutes to finish.
+🟢 **__Simple__**: A simple task that guides you step by step through the process and focuses on learning the basics. It should not take more than 15 minutes to finish.
 
-🟡 __Moderate__: A task that tests your understanding and transfer skills from syntax to real-world applications. These tasks can be solved in about 30 minutes depending on your knowledge.
+🟡 **__Moderate__**: A task that states a moderate problem to test your understanding and transfer skills from syntax to real-world applications. These tasks can be solved in about 30 minutes depending on your knowledge.
 
-🔴 __Complex__: A difficult or longer task that requires you to use the acquired knowledge of the previous tasks in a broader context or project. These tasks might take up to a few hours.
+🔴 **__Complex__**: A difficult or longer task that requires you to use the acquired knowledge of the previous tasks in a broader context or project. Such tasks might take up to a few hours.
 
 ## 🟢 Section I: Embedded System Configuration in YAML Format
 

@@ -5,11 +5,11 @@ You will create your first `.gitlab-ci.yml` file, run a pipeline, inspect runner
 
 All the following sections of this lab are based on the following levels of difficulty:
 
-🟢 __Simple__: A simple task that guides you step by step through the process and focuses on learning the basics. It should not take more than 15 minutes to finish.
+🟢 **__Simple__**: A simple task that guides you step by step through the process and focuses on learning the basics. It should not take more than 15 minutes to finish.
 
-🟡 __Moderate__: A task that states a moderate problem to test your understanding and transfer skills from syntax to real-world applications. These tasks can be solved in about 30 minutes depending on your knowledge.
+🟡 **__Moderate__**: A task that states a moderate problem to test your understanding and transfer skills from syntax to real-world applications. These tasks can be solved in about 30 minutes depending on your knowledge.
 
-🔴 __Complex__: A difficult or longer task that requires you to use the acquired knowledge of the previous tasks in a broader context or project. Such tasks might take up to a few hours.
+🔴 **__Complex__**: A difficult or longer task that requires you to use the acquired knowledge of the previous tasks in a broader context or project. Such tasks might take up to a few hours.
 
 ## 🟢 Section I: Create Your First GitLab CI Pipeline
 

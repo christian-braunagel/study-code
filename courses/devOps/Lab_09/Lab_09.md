@@ -2,13 +2,13 @@
 
 TBD.....................................
 
-All the following sections of this lab are based on the following levels of dificulty:
+All the following sections of this lab are based on the following levels of difficulty:
 
-Green __Simple__: A simple coding task that usually guides you step by step through the process and focuses on learning the basics. It should not take more than 15min to finish it.
+🟢 **__Simple__**: A simple task that guides you step by step through the process and focuses on learning the basics. It should not take more than 15 minutes to finish.
 
-Yellow __Moderate__: A coding task that usually states a moderate problem to test your understanding and transfer skills from syntax to real-world applications. These tasks can be solved in about 30mins depending on your knowledge.
+🟡 **__Moderate__**: A task that states a moderate problem to test your understanding and transfer skills from syntax to real-world applications. These tasks can be solved in about 30 minutes depending on your knowledge.
 
-Red __Complex__: Quite a difficult or lengthy coding task that requires you to use the acquired knowledge of the previous tasks in a broader context or project. Such tasks might take up to a few hours to solve them.
+🔴 **__Complex__**: A difficult or longer task that requires you to use the acquired knowledge of the previous tasks in a broader context or project. Such tasks might take up to a few hours.
 
 ## Green Section I: Create a Release from a Git Tag
 
