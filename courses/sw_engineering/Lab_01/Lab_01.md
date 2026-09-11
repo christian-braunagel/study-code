@@ -219,19 +219,6 @@ For each requirement:
 * Decide whether it is functional or non-functional
 * Save it in a suitable package or model structure
 
-#### 3. Short Reflection
-
-Briefly note two or three Enterprise Architect features that could be helpful when working with requirements.
-
-For example, you may consider:
-
-* Organizing requirements in packages
-* Linking requirements to other model elements
-* Adding notes, properties, or metadata
-* Creating diagrams to show relationships
-
-No presentation is required for this section.
-
 
 ## 🟢 Section V: Getting Started with GitLab Issues
 
@@ -265,19 +252,6 @@ For each issue:
 * Add a short description
 * Decide whether it describes a functional or non-functional requirement
 * Add a suitable label if labels are available in your project
-
-#### 3. Short Reflection
-
-Briefly note two or three GitLab Issues features that could be helpful when working with requirements.
-
-For example, you may consider:
-
-* Using labels to classify requirements
-* Discussing open questions in comments
-* Assigning issues to team members
-* Tracking status with issue boards or milestones
-
-No presentation is required for this section.
 
 
 ## 🔴 Section VI: Scrum Backlog Refinement Game
