@@ -215,7 +215,7 @@ Your `CMakeLists.txt` should:
 - create an executable target from `src/main.c`
 - link the executable against the library target
 - add the `include` directory through `target_include_directories`
-- request the C11 language standard through target properties or target compile features
+- request the C11 language standard
 
 Configure and build the project:
 
@@ -230,15 +230,15 @@ Run the generated executable from the build folder.
 
 Add compiler options to your CMake targets.
 
-For GCC or Clang, use:
+For GCC:
+* show all warnings and extra warnings
+* treat warnings as errors
+* add debugging information
+* optimize for performance
 
-```cmake
--Wall -Wextra -Werror -g
-```
+For the Microsoft Visual C++ compiler from Visual Studio, use an `if(MSVC)` block so that the project can be configured on different platforms.
 
-Use a conditional expression or an `if(MSVC)` block so that the project can be configured on different platforms.
-
-Also add a compile definition for `STARTING_TIME`.
+Also add a compile definition for `STARTING_TIME` which is used in `main.c`.
 
 Answer in `build_notes.md`:
 
@@ -278,14 +278,6 @@ The job should:
 - build the project with CMake
 - run the `test_move` executable
 - store the `build/` directory as an artifact
-
-Example commands for the job script:
-
-```bash
-cmake -S . -B build
-cmake --build build
-./build/test_move
-```
 
 Commit and push the pipeline file.
 Open GitLab and inspect the pipeline result.
