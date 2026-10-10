@@ -1,6 +1,6 @@
-# Lab 6: The Pre-Build Phase
+# Lab 6: The Pre-Build and Verification Phase
 
-This lab focuses on the steps that are performed before the actual build phase of a software project. This includes tasks such as linting, format checking, and checks of the formal process of the project.
+This lab focuses on the steps that are performed to verify the code quality before and after the build phase. This includes tasks such as linting, format checking, unit testing, and many more.
 
 All the following sections of this lab are based on the following levels of difficulty:
 
@@ -21,7 +21,7 @@ First we need to install the necessary tools for this lab. This includes a code 
 ### Task Description
 
 Select the operating system you are using and follow the instructions to install it.
-Assumption: You have already installed MSYS2 and the UCRT64 environment on your system. If not, please refer to Lab ????? for installation instructions.
+Assumption: You have already installed MSYS2 and the UCRT64 environment on your system. If not, please refer to section III of [Lab_01](https://gitlab.com/braunagel.christian/study-code/-/blob/main/courses/coding-in-C/Lab_1/Lab_1.md?ref_type=heads) for installation instructions.
 
 #### Windows
 * Open your MSYS2 UCRT64 Shell and install the `clang-format` package by running the following command:
@@ -84,25 +84,12 @@ UseTab: Never
 ColumnLimit: 100
 BreakBeforeBraces: Attach
 ```
-* Create a small C or C++ source file with intentionally inconsistent formatting, for example `main.cpp`.
+* Create a small C or C++ source file with intentionally inconsistent formatting, for example `main.cpp` which consists of only one line of code.
 * Format this single file in place by running:
 ```bash
 clang-format -i main.cpp
 ```
 * Check the changed file and verify that the formatting now follows the rules from `.clang-format`.
-* Format all C/C++ files in the current folder by running one of the following commands:
-
-#### Windows PowerShell
-```powershell
-Get-ChildItem -Recurse -Include *.c,*.cpp,*.h,*.hpp | ForEach-Object { clang-format -i $_.FullName }
-```
-
-#### Ubuntu/macOS
-```bash
-find . -name "*.c" -o -name "*.cpp" -o -name "*.h" -o -name "*.hpp" | xargs clang-format -i
-```
-* Add the `.clang-format` file to your Git repository so that all team members use the same formatting rules
-
 
 ### Part III: Learn more about Code Formatting
 
@@ -122,6 +109,9 @@ During your first team meeting, you suggest using `clang-format` to make the cod
 * Run `clang-format` on all `.cpp` and `.hpp` files in the project.
 * Check the changed files and verify that the requested style was applied.
 * Add the `.clang-format` file to Git together with the formatted source files.
+* Commit the changes and push them to your remote repository.
+* On the remote repository, create a pipeline that runs `clang-format` on all source files and fails if any file is not formatted correctly.
+* Test the pipeline by changing a source file and pushing it to the remote repository. The pipeline should fail and show which files are not formatted correctly.
 
 ### Requirements
 
@@ -134,7 +124,66 @@ During your first team meeting, you suggest using `clang-format` to make the cod
   * add spaces inside braced initializer lists, for example `{ 3, 7, 11, 15 }`
   * do not keep short functions on a single line
 
-### Shift-Left
+## 🟡 Section II: Static Code Analysis with a Linter
 
+In this section, you will use a linter to find suspicious code before the build or test phase.
+Formatting tools mainly change how code looks.
+Linters inspect the code and warn about possible bugs, unsafe constructs, unused values, and maintainability problems.
 
+### Task Description
+
+The folder `linting_sensor_project` contains a small C++ project with typical defects that a linter can detect.
+Your task is to run the linter manually first and then extend the GitLab pipeline from Section I with an automated linting job.
+
+### 1. Inspect the Project
+
+* Open the folder `linting_sensor_project`.
+* Inspect the files in the `include` and `src` folders.
+* Do not fix the code yet.
+* Open the `.clang-tidy` file and check which checks are enabled.
+
+### 2. Run the Linter Manually
+
+Run `clang-tidy` from inside the `linting_sensor_project` folder.
+
+#### Windows PowerShell
+```powershell
+Get-ChildItem -Recurse -Include *.cpp,*.hpp | ForEach-Object { clang-tidy --quiet --config-file=.clang-tidy $_.FullName -- -std=c++17 -Wall -Iinclude }
+```
+
+#### Ubuntu/macOS
+```bash
+clang-tidy --quiet --config-file=.clang-tidy src/*.cpp include/*.hpp -- -std=c++17 -Wall -Iinclude
+```
+
+Write down the reported warnings in a file called `linting_notes.md`.
+
+Answer:
+
+* Which warnings point to real bugs?
+* Which warnings point to maintainability or readability problems?
+* Why is it useful to run the linter before the build job?
+
+### 3. Fix the Reported Problems
+
+* Fix the problems reported by `clang-tidy`.
+* Run the manual lint command again.
+* Repeat this until the linter no longer reports errors.
+* Commit the fixed source files together with `linting_notes.md`.
+
+### 4. Add Linting to the GitLab Pipeline
+
+Copy `linting_sensor_project` into the GitLab repository that already contains the formatting pipeline from Section I, or create a new repository for this project and reuse the same pipeline structure.
+
+Update `.gitlab-ci.yml` so that the pipeline contains a linting job.
+The job should:
+
+* use a Linux image that contains or installs `clang-tidy`
+* run after the formatting job from Section I
+* run `clang-tidy` on all `.cpp` and `.hpp` files
+* fail the pipeline when the linter reports warnings or errors
+
+Commit and push the pipeline update.
+Create a new file with a small formatting or linting problem and push it to the remote repository.
+The pipeline should fail and show the reported problems.
 
