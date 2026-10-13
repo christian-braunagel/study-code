@@ -651,3 +651,39 @@ The presentation should explain:
 * One difficulty your team noticed during refinement or estimation
 
 No slides are required. A short oral explanation is sufficient.
+
+## 🟢 Section VIII: Agile Principles
+
+### Task Description
+
+The Agile Manifesto contains twelve principles that describe important ideas for agile software development.
+In this exercise, you will first reflect on these principles individually and then discuss them in a small team.
+
+#### 1. Individual Preparation
+
+* Read the twelve principles of the Agile Manifesto by yourself
+* Select the two principles that are most important from your point of view
+* Write down a short explanation for each selected principle
+* Be prepared to explain why these two principles matter to you
+
+#### 2. Group Discussion
+
+Gather in a group of three people.
+
+In your group:
+
+* Each person explains which two principles they selected and why they selected them
+* Discuss similarities and differences between your choices
+* Decide together which one principle is the most important one for your team
+
+#### 3. Short Presentation
+
+Choose one person from your group to briefly present your result.
+
+The presentation should explain:
+
+* Which principle your team selected
+* Why your team selected this particular principle
+* How this principle could influence the way a software team works
+
+No need to prepare slides for this presentation. A short oral explanation is sufficient.

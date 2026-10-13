@@ -1,0 +1,4 @@
+Checks: '-*,clang-diagnostic-*,bugprone-*,readability-*,performance-*,modernize-use-nullptr,cppcoreguidelines-pro-type-member-init,-readability-magic-numbers,-readability-convert-member-functions-to-static'
+WarningsAsErrors: '*'
+HeaderFilterRegex: '.*'
+FormatStyle: none

@@ -1,6 +1,6 @@
-# Lab 6: The Pre-Build Phase
+# Lab 6: The Pre-Build and Verification Phase
 
-This lab focuses on the steps that are performed before the actual build phase of a software project. This includes tasks such as linting, format checking, and checks of the formal process of the project.
+This lab focuses on the steps that are performed to verify the code quality before and after the build phase. This includes tasks such as linting, format checking, unit testing, and many more.
 
 All the following sections of this lab are based on the following levels of difficulty:
 
@@ -21,7 +21,7 @@ First we need to install the necessary tools for this lab. This includes a code 
 ### Task Description
 
 Select the operating system you are using and follow the instructions to install it.
-Assumption: You have already installed MSYS2 and the UCRT64 environment on your system. If not, please refer to Lab ????? for installation instructions.
+Assumption: You have already installed MSYS2 and the UCRT64 environment on your system. If not, please refer to section III of [Lab_01](https://gitlab.com/braunagel.christian/study-code/-/blob/main/courses/coding-in-C/Lab_1/Lab_1.md?ref_type=heads) for installation instructions.
 
 #### Windows
 * Open your MSYS2 UCRT64 Shell and install the `clang-format` package by running the following command:
@@ -84,25 +84,12 @@ UseTab: Never
 ColumnLimit: 100
 BreakBeforeBraces: Attach
 ```
-* Create a small C or C++ source file with intentionally inconsistent formatting, for example `main.cpp`.
+* Create a small C or C++ source file with intentionally inconsistent formatting, for example `main.cpp` which consists of only one line of code.
 * Format this single file in place by running:
 ```bash
 clang-format -i main.cpp
 ```
 * Check the changed file and verify that the formatting now follows the rules from `.clang-format`.
-* Format all C/C++ files in the current folder by running one of the following commands:
-
-#### Windows PowerShell
-```powershell
-Get-ChildItem -Recurse -Include *.c,*.cpp,*.h,*.hpp | ForEach-Object { clang-format -i $_.FullName }
-```
-
-#### Ubuntu/macOS
-```bash
-find . -name "*.c" -o -name "*.cpp" -o -name "*.h" -o -name "*.hpp" | xargs clang-format -i
-```
-* Add the `.clang-format` file to your Git repository so that all team members use the same formatting rules
-
 
 ### Part III: Learn more about Code Formatting
 
@@ -122,6 +109,9 @@ During your first team meeting, you suggest using `clang-format` to make the cod
 * Run `clang-format` on all `.cpp` and `.hpp` files in the project.
 * Check the changed files and verify that the requested style was applied.
 * Add the `.clang-format` file to Git together with the formatted source files.
+* Commit the changes and push them to your remote repository.
+* On the remote repository, create a pipeline that runs `clang-format` on all source files and fails if any file is not formatted correctly.
+* Test the pipeline by changing a source file and pushing it to the remote repository. The pipeline should fail and show which files are not formatted correctly.
 
 ### Requirements
 
@@ -134,7 +124,171 @@ During your first team meeting, you suggest using `clang-format` to make the cod
   * add spaces inside braced initializer lists, for example `{ 3, 7, 11, 15 }`
   * do not keep short functions on a single line
 
-### Shift-Left
+## 🟡 Section II: Static Code Analysis with a Linter
 
+In this section, you will use a linter to find suspicious code before the build or test phase.
+Formatting tools mainly change how code looks.
+Linters inspect the code and warn about possible bugs, unsafe constructs, unused values, and maintainability problems.
 
+### Task Description
+
+The folder `linting_sensor_project` contains a small C++ project with typical defects that a linter can detect.
+Your task is to run the linter manually first and then extend the GitLab pipeline from Section I with an automated linting job.
+
+### 1. Inspect the Project
+
+* Open the folder `linting_sensor_project`.
+* Inspect the files in the `include` and `src` folders.
+* Do not fix the code yet.
+* Open the `.clang-tidy` file and check which checks are enabled.
+
+### 2. Run the Linter Manually
+
+Run `clang-tidy` from inside the `linting_sensor_project` folder.
+
+#### Windows PowerShell
+```powershell
+Get-ChildItem -Recurse -Include *.cpp,*.hpp | ForEach-Object { clang-tidy --quiet --config-file=.clang-tidy $_.FullName -- -std=c++17 -Wall -Iinclude }
+```
+
+#### Ubuntu/macOS
+```bash
+clang-tidy --quiet --config-file=.clang-tidy src/*.cpp include/*.hpp -- -std=c++17 -Wall -Iinclude
+```
+
+Write down the reported warnings in a file called `linting_notes.md`.
+
+Answer:
+
+* Which warnings point to real bugs?
+* Which warnings point to maintainability or readability problems?
+* Why is it useful to run the linter before the build job?
+
+### 3. Fix the Reported Problems
+
+* Fix the problems reported by `clang-tidy`.
+* Run the manual lint command again.
+* Repeat this until the linter no longer reports errors.
+* Commit the fixed source files together with `linting_notes.md`.
+
+### 4. Add Linting to the GitLab Pipeline
+
+Copy `linting_sensor_project` into the GitLab repository that already contains the formatting pipeline from Section I, or create a new repository for this project and reuse the same pipeline structure.
+
+Update `.gitlab-ci.yml` so that the pipeline contains a linting job.
+The job should:
+
+* use a Linux image that contains or installs `clang-tidy`
+* run after the formatting job from Section I
+* run `clang-tidy` on all `.cpp` and `.hpp` files
+* fail the pipeline when the linter reports warnings or errors
+
+Commit and push the pipeline update.
+Create a new file with a small formatting or linting problem and push it to the remote repository.
+The pipeline should fail and show the reported problems.
+
+## 🟡 Section III: GitLab Security Scanning
+
+In this section, you will extend the pipeline with GitLab-native security scanning.
+GitLab provides predefined CI/CD templates for common security checks, so you do not have to install and maintain separate scanner scripts yourself.
+
+You will enable:
+
+* Secret Detection
+* Dependency Scanning
+* Static Application Security Testing (SAST)
+
+### Task Description
+
+Use the GitLab repository from the previous sections.
+Your task is to update the existing `.gitlab-ci.yml` file so that GitLab runs security scans automatically in the pipeline.
+
+### 1. Read About GitLab Security Scanners
+
+Open the GitLab documentation and read the short introduction pages for:
+
+* Secret Detection:
+  [https://docs.gitlab.com/user/application_security/secret_detection/pipeline/](https://docs.gitlab.com/user/application_security/secret_detection/pipeline/)
+* Dependency Scanning:
+  [https://docs.gitlab.com/user/application_security/dependency_scanning/dependency_scanning_sbom/](https://docs.gitlab.com/user/application_security/dependency_scanning/dependency_scanning_sbom/)
+* SAST:
+  [https://docs.gitlab.com/user/application_security/sast/](https://docs.gitlab.com/user/application_security/sast/)
+
+Answer in `security_notes.md`:
+
+* What kind of problem does each scanner try to find?
+
+### 2. Prepare a Small Dependency Example
+
+Dependency scanning needs dependency information.
+Add a small dependency manifest to your repository, for example a Python requirements file:
+
+```text
+flask==2.0.0
+requests==2.25.0
+```
+
+Store it as `requirements.txt` in the repository root.
+
+Add a small source file called `app.py` so that SAST has source code to inspect:
+
+```python
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route("/search")
+def search():
+    query = request.args.get("q", "")
+    return "Search query: " + query
+```
+
+Do not add real credentials to the repository.
+If you want to test secret detection, use only an obviously fake training value and remove it again after the experiment.
+
+### 3. Include GitLab Native Security Templates
+
+Update `.gitlab-ci.yml`.
+Keep the formatting and linting jobs from the previous sections and add the GitLab security templates.
+
+GitLab security scanning jobs use the `test` stage by default, so the pipeline must contain a `test` stage.
+
+### 4. Run and Inspect the Pipeline
+
+Commit and push the updated `.gitlab-ci.yml`, `requirements.txt`, `app.py`, and `security_notes.md`.
+
+Open GitLab and inspect:
+
+* `Build` > `Pipelines`
+* the jobs created by the included security templates
+* the job logs of the security scanners
+* the security findings, if your GitLab project shows a security or vulnerability report
+
+The dependency scanning job can also create a CycloneDX Software Bill of Materials (SBOM).
+Open the artifacts of the dependency scanning job and look for a file named similar to:
+
+```text
+gl-sbom-<package-type>-<package-manager>.cdx.json
+```
+
+For the Python dependency example, the exact name depends on the analyzer output.
+If no SBOM is created, check whether the repository contains a supported dependency file such as `requirements.txt`.
+
+Answer in `security_notes.md`:
+
+* Which new jobs were added by the templates?
+* Which stage did the security jobs run in?
+* Did the pipeline pass or fail?
+* Where can you see the scanner results in GitLab?
+* Was an SBOM artifact created? If yes, what is the file name?
+* Which dependencies are listed in the SBOM?
+
+### 5. Compare Manual Jobs and Native Templates
+
+Answer in `security_notes.md`:
+
+* How is the GitLab template approach different from writing your own shell commands?
+* Why is it useful that GitLab maintains these scanner templates?
+* What are the limits of automated security scanning?
+* Why should security scanner findings still be reviewed by a developer?
 
