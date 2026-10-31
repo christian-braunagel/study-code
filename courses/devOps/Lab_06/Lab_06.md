@@ -349,27 +349,10 @@ The production code contains:
 
 Create a file called `testing_notes.md` and use it to document your observations.
 
-### 1. Verify the Required Tools
+### 1. Extend the CMake Project with GoogleTest
 
 Use the tools from Lab 05 and verify that they are available.
 GoogleTest must also be installed on the system so CMake can find it.
-Typical package names are `mingw-w64-ucrt-x86_64-gtest` on MSYS2 UCRT64, `libgtest-dev` on Ubuntu, and `googletest` on macOS with Homebrew.
-
-```bash
-g++ --version
-cmake --version
-git --version
-```
-
-Write the detected versions into `testing_notes.md`.
-
-Answer:
-
-* Which compiler version do you use?
-* Which CMake version do you use?
-* Why should a pipeline use a clearly defined build environment?
-
-### 2. Extend the CMake Project with GoogleTest
 
 Create a `CMakeLists.txt` file for `gtest_pipeline_project`.
 Use the target-based CMake style from Lab 05:
@@ -528,7 +511,7 @@ Answer in `testing_notes.md`:
 
 ### 6. Add GoogleTest to the GitLab Pipeline
 
-Create a `.gitlab-ci.yml` file in the root of `gtest_pipeline_project`.
+Create a `.gitlab-ci.yml` file in the root of `gtest_pipeline_project` based on the pipeline from Section III.
 Add a job called `gtest-cmake` that configures, builds, and tests the project.
 
 The job should:
@@ -635,9 +618,6 @@ Important parameters:
 
 * `--coverage` enables GCC's coverage instrumentation.
 * `-O0` disables optimization, which makes coverage results easier to understand.
-* `-g` adds debug information.
-* `-Iinclude` tells the compiler where the project headers are located.
-* `-o coverage_test` names the generated executable.
 
 After compiling, inspect the generated files.
 You should see files ending in `.gcno`.
