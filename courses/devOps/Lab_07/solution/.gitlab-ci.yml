@@ -1,0 +1,114 @@
+stages:
+  - build
+  - test
+  - package
+  - sign
+  - publish
+  - release
+
+variables:
+  APP_VERSION: "$CI_COMMIT_TAG"
+
+build_app:
+  stage: build
+  image: gcc:14
+  before_script:
+    - apt-get update
+    - apt-get install --yes --no-install-recommends cmake make libgtest-dev
+  script:
+    - cmake -S . -B build -G "Unix Makefiles"
+    - cmake --build build
+  artifacts:
+    paths:
+      - build/
+    expire_in: 1 week
+
+test_app:
+  stage: test
+  image: gcc:14
+  before_script:
+    - apt-get update
+    - apt-get install --yes --no-install-recommends cmake gcovr
+  script:
+    - ctest --test-dir build --output-on-failure
+    - gcovr --root . --filter src/ --txt coverage_report.txt
+    - gcovr --root . --filter src/ --html-details coverage_report.html
+  artifacts:
+    when: always
+    paths:
+      - build/Testing/
+      - coverage_report*
+    expire_in: 1 week
+
+package_app:
+  stage: package
+  image: gcc:14
+  rules:
+    - if: '$CI_COMMIT_TAG'
+  before_script:
+    - apt-get update
+    - apt-get install --yes --no-install-recommends zip
+  script:
+    - mkdir -p package/bin package/reports dist
+    - cp build/status_analyzer_app package/bin/
+    - cp coverage_report* package/reports/
+    - cp -r build/Testing package/reports/
+    - cp README.md package/
+    - echo "$APP_VERSION" > package/VERSION.txt
+    - echo "$CI_COMMIT_SHA" > package/COMMIT.txt
+    - zip -r "dist/status-analyzer-$APP_VERSION.zip" package/
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 1 week
+
+sign_package:
+  stage: sign
+  image: gcc:14
+  rules:
+    - if: '$CI_COMMIT_TAG'
+  before_script:
+    - apt-get update
+    - apt-get install --yes --no-install-recommends openssl
+  script:
+    - test -f "$SIGNING_PRIVATE_KEY"
+    - openssl pkey -in "$SIGNING_PRIVATE_KEY" -pubout -out dist/public.pem
+    - openssl dgst -sha256 -sign "$SIGNING_PRIVATE_KEY" -out "dist/status-analyzer-$APP_VERSION.zip.sig" "dist/status-analyzer-$APP_VERSION.zip"
+    - openssl dgst -sha256 -verify dist/public.pem -signature "dist/status-analyzer-$APP_VERSION.zip.sig" "dist/status-analyzer-$APP_VERSION.zip"
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 1 week
+
+publish_package:
+  stage: publish
+  image: gcc:14
+  rules:
+    - if: '$CI_COMMIT_TAG'
+  before_script:
+    - apt-get update
+    - apt-get install --yes --no-install-recommends curl
+  script:
+    - 'curl --fail-with-body --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file "dist/status-analyzer-$APP_VERSION.zip" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/status-analyzer/$APP_VERSION/status-analyzer-$APP_VERSION.zip"'
+    - 'curl --fail-with-body --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file "dist/status-analyzer-$APP_VERSION.zip.sig" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/status-analyzer/$APP_VERSION/status-analyzer-$APP_VERSION.zip.sig"'
+    - 'curl --fail-with-body --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file dist/public.pem "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/status-analyzer/$APP_VERSION/public.pem"'
+
+release_job:
+  stage: release
+  image: registry.gitlab.com/gitlab-org/cli:latest
+  rules:
+    - if: '$CI_COMMIT_TAG'
+  script:
+    - echo "Creating release for $CI_COMMIT_TAG"
+  release:
+    tag_name: "$CI_COMMIT_TAG"
+    name: "Release $CI_COMMIT_TAG"
+    description: "Verified StatusAnalyzer package with unit-test and coverage evidence."
+    assets:
+      links:
+        - name: "StatusAnalyzer ZIP"
+          url: "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/status-analyzer/$APP_VERSION/status-analyzer-$APP_VERSION.zip"
+        - name: "SHA-256 signature"
+          url: "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/status-analyzer/$APP_VERSION/status-analyzer-$APP_VERSION.zip.sig"
+        - name: "Public key"
+          url: "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/status-analyzer/$APP_VERSION/public.pem"

@@ -1,0 +1,8 @@
+/build/
+/package/
+/dist/
+/coverage_report*
+*.gcda
+*.gcno
+*.pem
+*.key

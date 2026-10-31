@@ -1,0 +1,34 @@
+stages:
+  - build
+  - test
+
+build_app:
+  stage: build
+  image: gcc:14
+  before_script:
+    - apt-get update
+    - apt-get install --yes --no-install-recommends cmake make libgtest-dev
+  script:
+    - cmake -S . -B build -G "Unix Makefiles"
+    - cmake --build build
+  artifacts:
+    paths:
+      - build/
+    expire_in: 1 week
+
+test_app:
+  stage: test
+  image: gcc:14
+  before_script:
+    - apt-get update
+    - apt-get install --yes --no-install-recommends cmake gcovr
+  script:
+    - ctest --test-dir build --output-on-failure
+    - gcovr --root . --filter src/ --txt coverage_report.txt
+    - gcovr --root . --filter src/ --html-details coverage_report.html
+  artifacts:
+    when: always
+    paths:
+      - build/Testing/
+      - coverage_report*
+    expire_in: 1 week
