@@ -1,0 +1,86 @@
+# Copy this file to .gitlab-ci.yml at the root of your Section I repository.
+# Keep src/, include/, and .clang-format at that root.
+# Copy linting_sensor_project/ (including .clang-tidy) into the same repository.
+# Commit the Section III requirements.txt and app.py at the repository root.
+include:
+  - template: Jobs/Secret-Detection.gitlab-ci.yml
+  - template: Jobs/SAST.gitlab-ci.yml
+
+stages:
+  - verify
+  - lint
+  - test
+  - build
+
+variables:
+  # Include security scanners in the merge request pipelines enabled below.
+  AST_ENABLE_MR_PIPELINES: "true"
+
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS && $CI_PIPELINE_SOURCE == "push"'
+      when: never
+    - if: '$CI_COMMIT_BRANCH && $CI_PIPELINE_SOURCE == "push"'
+
+check_format:
+  stage: verify
+  image: ubuntu:24.04
+  before_script:
+    - apt-get update
+    - apt-get install --yes --no-install-recommends clang-format-18
+    - clang-format-18 --version
+  script:
+    - |
+      if [ ! -f .clang-format ]; then
+        echo "Missing .clang-format: add your project formatting configuration."
+        exit 1
+      fi
+    - clang-format-18 --style=file --dry-run --Werror src/*.cpp include/*.hpp
+
+# A later stage runs only after the formatting stage succeeds.
+lint_code:
+  stage: lint
+  image: ubuntu:24.04
+  before_script:
+    - apt-get update
+    - apt-get install --yes --no-install-recommends clang-tidy-18 g++
+    - clang-tidy-18 --version
+  script:
+    - cd linting_sensor_project
+    - |
+      if [ ! -f .clang-tidy ]; then
+        echo "Missing .clang-tidy: commit the lint configuration with the project."
+        exit 1
+      fi
+    - clang-tidy-18 --config-file=.clang-tidy --warnings-as-errors='*' src/*.cpp include/*.hpp -- -std=c++17 -Wall -Wextra -Iinclude
+
+trivy-dependencies:
+  stage: test
+  image:
+    name: aquasec/trivy:0.76.1
+    entrypoint: [""]
+  variables:
+    TRIVY_NO_PROGRESS: "true"
+  script:
+    - trivy --version
+    # Save both reports before enforcing the vulnerability threshold.
+    - trivy fs --scanners vuln --exit-code 0 --format json --output trivy-report.json .
+    - trivy fs --format cyclonedx --exit-code 0 --output trivy-sbom.cdx.json .
+    - trivy fs --scanners vuln --severity HIGH,CRITICAL --exit-code 1 .
+  artifacts:
+    when: always
+    paths:
+      - trivy-report.json
+      - trivy-sbom.cdx.json
+
+gtest-cmake:
+  stage: test
+  image: gcc:14
+  before_script:
+    - apt-get update
+    - apt-get install --yes --no-install-recommends cmake gtest
+  script:
+    - cmake -S . -B build -G "Unix Makefiles"
+    - cmake --build build
+    - ctest --test-dir build --output-on-failure
