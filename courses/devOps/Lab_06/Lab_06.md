@@ -591,6 +591,11 @@ gcovr --version
 If `gcovr` is missing, install it with your package manager or with Python:
 
 ```bash
+pacman -Syu
+pacman -S --needed mingw-w64-ucrt-x86_64-gcovr
+```
+or
+```bash
 python -m pip install gcovr
 ```
 
