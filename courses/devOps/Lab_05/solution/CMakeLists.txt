@@ -39,13 +39,13 @@ target_link_libraries(test-move
 
 # Note: PRIVATE not PUBLIC
 if(MSVC)
-    target_compile_options(chess-core PRIVATE /W4 /WX)
-    target_compile_options(chess-app PRIVATE /W4 /WX)
-    target_compile_options(test-move PRIVATE /W4 /WX)
+    target_compile_options(chess-core PRIVATE /W4 /WX /O2)
+    target_compile_options(chess-app PRIVATE /W4 /WX /O2)
+    target_compile_options(test-move PRIVATE /W4 /WX /O2)
 else()
-    target_compile_options(chess-core PRIVATE -Wall -Wextra -Werror -g)
-    target_compile_options(chess-app PRIVATE -Wall -Wextra -Werror -g)
-    target_compile_options(test-move PRIVATE -Wall -Wextra -Werror -g)
+    target_compile_options(chess-core PRIVATE -Wall -Wextra -Werror -g /O2)
+    target_compile_options(chess-app PRIVATE -Wall -Wextra -Werror -g /O2)
+    target_compile_options(test-move PRIVATE -Wall -Wextra -Werror -g /O2)
 endif()
 
 
