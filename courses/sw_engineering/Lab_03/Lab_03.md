@@ -306,3 +306,111 @@ Then answer briefly:
 Submit your MR link and these observations. Keep the successful MR available for review.
 
 GitLab references: [Merge request pipelines](https://docs.gitlab.com/ci/pipelines/merge_request_pipelines/) and [switching between branch and merge request pipelines](https://docs.gitlab.com/ci/yaml/workflow/#switch-between-branch-pipelines-and-merge-request-pipelines).
+
+## 🟡 Section III: Possible Exam Questions for Verification
+
+This section contains a selection of possible exam questions related to software verification and quality assurance. They are based on the slides and exercises from the course.
+
+### 1. Verification, Validation, QA and QC
+
+A company develops a navigation system for emergency vehicles. The following activities are performed during development.
+
+**a)** Classify each activity as primarily **Verification, Validation, Quality Assurance (QA), or Quality Control (QC)**. Explain your decision.
+
+| Activity | Classification |
+|---|---|
+| A. Emergency responders evaluate whether the system supports their actual workflows. | |
+| B. A developer checks whether the implemented route calculation matches the specified algorithm. | |
+| C. The organization introduces mandatory coding guidelines and review procedures. | |
+| D. The test team executes tests to identify defects in the finished software. | |
+
+**b)** Explain the fundamental difference between Verification and Validation.
+
+**c)** Explain why QA should not be replaced entirely by QC activities.
+
+
+### 2. Review Metrics
+
+Two development teams review different software components. The following results are available:
+
+| Metric | Team A | Team B |
+|---|---:|---:|
+| Component size (LOC) | 2,000 | 3,000 |
+| Reviewed LOC | 1,600 | 3,000 |
+| Defects found | 24 | 30 |
+| Total review effort | 8 h | 15 h |
+| Critical defects | 3 | 1 |
+| Major defects | 9 | 11 |
+| Minor defects | 12 | 18 |
+
+**a)** Calculate the **defect density per KLOC** for each team, using reviewed LOC as the denominator.
+
+**b)** Calculate the **defect detection rate** in defects per review hour.
+
+**c)** Calculate the **review coverage** of each team as a percentage.
+
+**d)** Which team has the higher defect detection rate? Does this necessarily mean that its review process is more effective? Justify your answer.
+
+**e)** Explain why the defect severity distribution is relevant when prioritizing corrective actions.
+
+
+### 3. Pair Programming
+
+Two developers implement a safety-critical monitoring component using pair programming.
+
+**a)** Describe the responsibilities of the **Driver** and **Navigator**.
+
+**b)** Explain two advantages of pair programming compared with working individually and reviewing the code only after implementation.
+
+**c)** State one potential disadvantage of pair programming and propose one measure to mitigate it.
+
+
+### 4. Types of Static Analysis
+
+Assign the most appropriate type of static analysis to each finding.
+
+Choose from: **Linting, Static Application Security Testing (SAST), Software Composition Analysis (SCA), Code Quality Analysis, Compliance Checking.**
+
+Tools may cover several categories; select the best fit. Types may be used more than once.
+
+| Finding | Analysis type |
+|---|---|
+| A. A function name violates the project's naming convention. | |
+| B. A third-party library contains a known CVE. | |
+| C. User input is concatenated into an SQL query. | |
+| D. Several classes contain almost identical implementations. | |
+| E. A C++ implementation violates an AUTOSAR C++ coding rule. | |
+| F. A local variable could be declared `const`. | |
+| G. A component contains a deeply nested function that is difficult to maintain. | |
+| H. A third-party dependency inventory identifies a library whose license is prohibited by company policy. | |
+| I. An unsafe buffer operation may cause a buffer overflow. | |
+| J. Source code violates a mandatory MISRA C++ rule. | |
+
+### 5. Static Code Analysis of C++
+
+Consider the following simplified C++ code for calculating an aircraft's target climb airspeed. All airspeeds and corrections are expressed in knots; the limits are illustrative values for this question.
+
+```cpp
+#define MAX_AIRSPEED_KNOTS 250
+
+int CalculateTargetAirspeed(int* measuredAirspeed, int correctionKnots)
+{
+    int targetAirspeed = *measuredAirspeed + correctionKnots;
+
+    // Keep the target above the minimum climb airspeed.
+    if (targetAirspeed < 120)
+    {
+        targetAirspeed = 120;
+    }
+
+    // Limit the target to the maximum permitted airspeed.
+    if (targetAirspeed = MAX_AIRSPEED_KNOTS)
+    {
+        targetAirspeed = MAX_AIRSPEED_KNOTS;
+    }
+
+    return targetAirspeed;
+}
+```
+
+Identify **four issues** that could be reported by a linter or code quality analysis tool. For each issue, briefly explain the problem and propose a correction.
