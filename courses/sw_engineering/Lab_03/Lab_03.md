@@ -414,3 +414,83 @@ int CalculateTargetAirspeed(int* measuredAirspeed, int correctionKnots)
 ```
 
 Identify **four issues** that could be reported by a linter or code quality analysis tool. For each issue, briefly explain the problem and propose a correction.
+
+
+## 🟡 Section IV: Calculating Test Coverage
+
+In this exercise, you will calculate **branch coverage, condition coverage, modified condition/decision coverage (MC/DC), and path coverage** for the same test suite. You will then extend the suite to meet each coverage target.
+
+### Task Description
+
+A monitoring component activates an alarm when both sensors report a fault or when a manual override is active. It also records whether logging is enabled.
+
+Consider the following C++ function. All inputs are independent Boolean values, and every input combination is valid.
+
+```cpp
+int EvaluateAlarm(bool sensorA, bool sensorB, bool manualOverride, bool loggingEnabled)
+{
+    int result = 0;
+
+    // Boolean bitwise operators to avoid short-circuiting and ensure all conditions are evaluated.
+    const bool alarmRequired = (sensorA & sensorB) | manualOverride;
+
+    if (alarmRequired) // D1: (A AND B) OR C
+    {
+        result += 1;
+    }
+
+    if (loggingEnabled) // D2: D
+    {
+        result += 2;
+    }
+
+    return result;
+}
+```
+
+Use these condition labels: **A** = `sensorA`, **B** = `sensorB`, **C** = `manualOverride`, and **D** = `loggingEnabled`.
+
+The initial test suite contains three tests:
+
+| Test | A | B | C | D |
+|---|---|---|---|---|
+| T1 | True | True | False | True |
+| T2 | False | False | False | False |
+| T3 | True | False | True | True |
+
+
+
+
+For each metric, show the covered items, the total number of items, and the resulting percentage:
+
+`Coverage = covered items / total items * 100%`
+
+### Tasks
+
+**a) Trace the tests.** Complete the table before calculating coverage.
+
+In **Path (D1, D2)**, record the two `if` outcomes in order. For example, `(True, False)` means the first `if` body executes and the second is skipped. Tests with the same pair follow the same path.
+
+
+| Test | D1 outcome | D2 outcome | Return value | Path (D1, D2) |
+|---|---|---|---|---|
+| T1 | | | | |
+| T2 | | | | |
+| T3 | | | | |
+
+**b) Calculate branch coverage.** List the observed outcomes for D1 and D2, then calculate the coverage of the initial suite.
+
+**c) Calculate condition coverage.** List the observed outcomes for A, B, C, and D, then calculate the coverage of the initial suite. Explain why condition coverage and branch coverage measure different things.
+
+**d) Calculate MC/DC.** For each condition, identify a valid independence pair from T1–T3 or explain why no pair exists. Calculate the percentage using the counting rules above. Can a suite reach 100% branch and condition coverage without achieving full MC/DC? Use your results to justify your answer.
+
+| Condition | Decision | Independence pair, or reason no pair exists |
+|---|---|---|
+| A | D1 | |
+| B | D1 | |
+| C | D1 | |
+| D | D2 | |
+
+**e) Calculate path coverage.** Enumerate all feasible paths, identify those executed by T1–T3, and calculate the coverage. Explain why testing every Boolean input combination is not required for full path coverage in this function.
+
+**f) Extend the suite.** Keep T1–T3 and add tests until the combined suite achieves **100% of all four metrics**. Use as few additional tests as you can, and justify your choice. Give every added test a unique ID and specify its inputs, expected decision outcomes, and expected return value.
