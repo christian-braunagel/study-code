@@ -7,13 +7,12 @@ include:
   - template: Jobs/SAST.gitlab-ci.yml
 
 stages:
-  - verify
-  - lint
-  - test
+  - prebuild
   - build
+  - test
 
 variables:
-  # Include security scanners in the merge request pipelines enabled below.
+  # Include security & secret scanners in the merge request pipelines enabled below.
   AST_ENABLE_MR_PIPELINES: "true"
 
 workflow:
@@ -24,7 +23,7 @@ workflow:
     - if: '$CI_COMMIT_BRANCH && $CI_PIPELINE_SOURCE == "push"'
 
 check_format:
-  stage: verify
+  stage: prebuild
   image: ubuntu:24.04
   before_script:
     - apt-get update
@@ -38,9 +37,8 @@ check_format:
       fi
     - clang-format-18 --style=file --dry-run --Werror src/*.cpp include/*.hpp
 
-# A later stage runs only after the formatting stage succeeds.
 lint_code:
-  stage: lint
+  stage: prebuild
   image: ubuntu:24.04
   before_script:
     - apt-get update
@@ -59,7 +57,7 @@ trivy-dependencies:
   stage: test
   image:
     name: aquasec/trivy:0.76.1
-    entrypoint: [""]
+    entrypoint: [""] # Runner clears the image's default entrypoint
   variables:
     TRIVY_NO_PROGRESS: "true"
   script:
@@ -74,8 +72,8 @@ trivy-dependencies:
       - trivy-report.json
       - trivy-sbom.cdx.json
 
-gtest-cmake:
-  stage: test
+build-cmake:
+  stage: build
   image: gcc:14
   before_script:
     - apt-get update
@@ -83,4 +81,17 @@ gtest-cmake:
   script:
     - cmake -S . -B build -G "Unix Makefiles"
     - cmake --build build
+  artifacts:
+    paths:
+      - build/
+
+gtest-cmake:
+  stage: test
+  image: gcc:14
+  dependencies:
+    - build-cmake
+  before_script:
+    - apt-get update
+    - apt-get install --yes --no-install-recommends cmake gtest
+  script:
     - ctest --test-dir build --output-on-failure
