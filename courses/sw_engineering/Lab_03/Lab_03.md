@@ -122,7 +122,6 @@ You will trigger it by pushing a commit and by creating or updating a merge requ
 
 * A GitLab account and permission to push branches and create merge requests in your project.
 * Git installed locally and authentication configured for your GitLab instance.
-* An available Linux runner using the Docker or Kubernetes executor that can run the `gcc:14` image. Check **Settings > CI/CD > Runners**; ask your instructor if no suitable runner is available. This exercise uses jobs without runner tags.
 
 The C++ compiler runs inside the pipeline's container, so a local compiler installation is optional.
 A **pipeline** contains automated **jobs**; a **runner** executes those jobs. **Stages** group jobs and determine their order.
