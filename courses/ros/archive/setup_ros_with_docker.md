@@ -51,25 +51,25 @@ The first command displays the installed Docker version. The second downloads an
 
 ## Running ROS in Docker
 
-### 1. Download the ROS 2 Jazzy Jalisco image
+### 1. Download the ROS 2 Lyrical Luth image
 
-The lecture uses **ROS 2 Jazzy Jalisco**. The official `ros:jazzy-ros-base-noble` image provides ROS 2 command-line tools and libraries on Ubuntu 24.04 (Noble). ROS does not need to be installed on your host computer.
+The lecture uses **ROS 2 Lyrical Luth**. The official `ros:lyrical-ros-base-resolute` image provides ROS 2 command-line tools and libraries on Ubuntu 26.04 (Resolute Raccoon). ROS does not need to be installed on your host computer.
 
 Run the following commands in your host terminal (PowerShell on Windows, or a terminal on Linux/macOS). On Windows, Docker Desktop must use **Linux containers**.
 
 ```bash
-docker pull ros:jazzy-ros-base-noble
+docker pull ros:lyrical-ros-base-resolute
 ```
 
-Use this explicit tag to select Jazzy rather than relying on `latest`, which can change to another ROS distribution.
+Use this explicit tag to keep using Lyrical even if `latest` moves to another ROS distribution.
 
 ### 2. Create a persistent ROS container (first session)
 
 ```bash
-docker run --name ros-jazzy -it ros:jazzy-ros-base-noble bash
+docker run --name ros-lyrical -it ros:lyrical-ros-base-resolute bash
 ```
 
-- `--name ros-jazzy` gives the container a name for use in later commands.
+- `--name ros-lyrical` gives the container a name for use in later commands.
 - `-it` opens an interactive terminal.
 - `bash` starts a Bash shell inside the container.
 
@@ -82,7 +82,7 @@ printenv ROS_DISTRO
 ros2 --help
 ```
 
-The first command should print `jazzy`; the second should display the ROS 2 command-line help.
+The first command should print `lyrical`; the second should display the ROS 2 command-line help.
 
 ### 3. Stop and resume the container
 
@@ -95,12 +95,12 @@ exit
 The container remains on your computer, including any packages you install and files you create. To resume it in your next session, run this command in a host terminal:
 
 ```bash
-docker start -ai ros-jazzy
+docker start -ai ros-lyrical
 ```
 
 This restarts the existing container and attaches your terminal to its Bash shell. The ROS environment is loaded automatically again.
 
-Use `docker run` to create the container once and `docker start -ai ros-jazzy` for subsequent sessions. Running `docker run --name ros-jazzy ...` again fails while a container with that name already exists, even if it is stopped. To see running and stopped containers, use:
+Use `docker run` to create the container once and `docker start -ai ros-lyrical` for subsequent sessions. Running `docker run --name ros-lyrical ...` again fails while a container with that name already exists, even if it is stopped. To see running and stopped containers, use:
 
 ```bash
 docker ps -a
@@ -108,4 +108,13 @@ docker ps -a
 
 Files and installed packages survive stopping and restarting because the container was created without `--rm`. They are lost if the container is deleted. Keep important source code in a mounted host folder (bind mount) or Docker volume so it also survives container deletion.
 
-For image details, see the [official ROS Docker image documentation](https://hub.docker.com/_/ros/) and the [ROS Jazzy image announcement](https://discourse.ros.org/t/ros-jazzy-docker-images/37879).
+### 4. Install Turtlesim
+
+Inside the running ROS container, run these commands to refresh the package lists and install Turtlesim.
+
+```bash
+apt-get update
+apt-get install -y ros-${ROS_DISTRO}-turtlesim
+```
+
+For image details, see the [official ROS Docker image documentation](https://hub.docker.com/_/ros/) and the [ROS Lyrical image announcement](https://discourse.openrobotics.org/t/lyrical-luth-test-and-tutorial-party-instructions/54427/14).
