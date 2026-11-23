@@ -1,6 +1,14 @@
 # Lab 5: Random Particle Simulation with Pointers
 
-## Section I
+All the following sections of this lab are based on the following levels of dificulty:
+
+🟢 __Simple__: A simple coding task that usually guides you step by step through the process and focuses on learning the basics. It should not take more than 15min to finish it.
+
+🟡 __Moderate__: A coding task that usually states a moderate problem to test your understanding and transfer skills from syntax to real-world applications. These tasks can be solved in about 30mins depending on your knowledge.
+
+🔴 __Complex__: Quite a difficult or lengthy coding task that requires you to use the acquired knowledge of the previous tasks in a broader context or project. Such tasks might take up to a few hours to solve them.
+
+## 🟢 Section I
 Given the following code:
 ```c
 #include <stdio.h>
@@ -33,7 +41,7 @@ int main(void) {
 - *pp
 - **pp
 
-## Section II
+## 🟡 Section II
 
 Write a C program that:
 
@@ -69,7 +77,7 @@ Argument 2 at address "000001A174BFAE00" has content: world (length: 5)
 - Do not use global variables
 - Use standard C library functions only
 
-## Section III
+## 🔴 Section III
 
 ### Introduction
 In this exercise, you will simulate a simple 1D particle system using pointers in C.  

@@ -7,8 +7,16 @@ In short:
 - If you really understand linked lists, you understand C.
 - If you really can code linked lists, you can code in C.
 
+All the following sections of this lab are based on the following levels of dificulty:
+
+🟢 __Simple__: A simple coding task that usually guides you step by step through the process and focuses on learning the basics. It should not take more than 15min to finish it.
+
+🟡 __Moderate__: A coding task that usually states a moderate problem to test your understanding and transfer skills from syntax to real-world applications. These tasks can be solved in about 30mins depending on your knowledge.
+
+🔴 __Complex__: Quite a difficult or lengthy coding task that requires you to use the acquired knowledge of the previous tasks in a broader context or project. Such tasks might take up to a few hours to solve them.
+
 ---
-## Section I: Linked lists
+## 🟡 Section I: Linked lists
 
 ### Task Description
 1. Watch the tutorial on how to code a [linked list in C](https://www.youtube.com/watch?v=CF2T9oJv2mQ) or another freely available tutorial on e.g. youtube.
@@ -32,7 +40,7 @@ ListElement *a = malloc(sizeof *a);    // better since we use the target variabl
 ---
 
 
-## Section II: Stacks
+## 🟡 Section II: Stacks
 
 ### Task Description
 1. Watch the tutorial on how to code a [stack in C](https://www.youtube.com/watch?v=DdyI_4Tu4f4&t=5s) or another freely available tutorial on e.g. youtube.
@@ -55,7 +63,7 @@ Stack *s = malloc(sizeof *s);    // better since we use the target variable in s
 
 ---
 
-## Section III: Queues
+## 🟡 Section III: Queues
 
 ### Task Description
 1. Watch the tutorial on how to code a [queue in C](https://www.youtube.com/watch?v=yKNPFKfnlt8) or another freely available tutorial on e.g. youtube.
