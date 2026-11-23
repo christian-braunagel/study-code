@@ -45,3 +45,33 @@ Select **Nodes/Topics (active)** in the graph mode menu and click **Refresh** (t
 - Make a screenshot of the graph and add it to your documentation.
 - Describe what the graph shows and which forms represent nodes and topics.
 
+## 4. Reconnect the viewer on a different topic
+
+Leave the viewer running in terminal 2. Stop the camera with **Ctrl+C** in terminal 1, then restart it with `-r` to remap its output topic from `/image` to `/lab_camera`.
+
+```bash
+ros2 run image_tools cam2image --ros-args -p burger_mode:=true -r /image:=/lab_camera
+```
+
+The viewer may still show the last frame it received. Check terminal 2 for new receive logs, refresh `rqt_graph`, and compare the publisher and subscription counts in terminal 3.
+
+```bash
+ros2 topic info /image
+ros2 topic info /lab_camera
+```
+
+Stop the viewer with **Ctrl+C** in terminal 2, then restart it with the same topic remapping.
+
+```bash
+ros2 run image_tools showimage --ros-args -r /image:=/lab_camera
+```
+
+Confirm that the viewer is receiving frames again and refresh `rqt_graph`.
+
+### Documentation
+
+- Explain why the viewer stopped receiving frames while both nodes were running.
+- Include a screenshot of the restored connection of the rqt graph. What stayed the same and what changed?
+
+Stop the camera and viewer with **Ctrl+C** and close the graph window when you finish.
+

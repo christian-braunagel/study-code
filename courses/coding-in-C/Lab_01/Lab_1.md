@@ -98,7 +98,7 @@ Follow-up section to section V.
 9. Create a new commit for these changes.
 10. Display all existing branches.
 
-## 🟡 Section VIII: Merge it
+## 🟢 Section VIII: Merge it
 
 Follow-up section to section VI.
 
@@ -111,7 +111,7 @@ Follow-up section to section VI.
 7. Try to merge main with "another-lorem-ipsum". What happens?
 8. Resolve the conflict so that the changes from "another-lorem-ipsum" are preserved.
 
-## 🟡 Section IX: Working with remote repositories
+## 🟢 Section IX: Working with remote repositories
 
 This section describes the process you should follow for the upcoming labs:
 
@@ -151,7 +151,7 @@ However, in the best case you tried both environments to build the program and r
 5. Create a new file called "helloWorld.c" and write a short Hello World C-program.
 6. Now it is time to build! We will try out several ways to do that.
 
-## 🟡 Section XI: Building C files
+## 🟢 Section XI: Building C files
 
 There are different ways on how to build/trigger the build process. Follow the tutorials below, to get familiar with all of them.
 The steps follow directly after section X but can also be used to build other c-programs.
@@ -162,7 +162,7 @@ The steps follow directly after section X but can also be used to build other c-
    * Note II: If you use GitHub codespaces, you keep using the VSCode terminal from the start.
 2. Enter the following command to build the program:
 ``` bash
-gcc helloWorld.c -o helloWorld.o
+gcc helloWorld.c -o helloWorld
 ```
 3. Explanation of the command:
    * gcc: The command to execute the compiler
@@ -178,11 +178,11 @@ gcc helloWorld.c -o helloWorld.o
 ### B: Using VSCode to build and run (for Codespaces and your personal machine with gcc)
 1. Open your file "helloWorld.c" in VSCode and press F5 (or use the menue ```Run > Start Debugging``` or ```Run > Run without Debugging```).
 
-![Image of the icon in VSCode](https://github.com/christian-braunagel/study-code/blob/main/courses/coding-in-C/Lab_1/runCFileInVSCode.png)
+![Image of the icon in VSCode](https://github.com/christian-braunagel/study-code/blob/main/courses/coding-in-C/Lab_01/runCFileInVSCode.png)
 
 2. A drop down window on the top of VSCode might occur, asking to select the debug configuration. If so, select the C/C++: gcc.exe
 
-   ![Image of compiler selection drop down menu in VSCode](https://github.com/christian-braunagel/study-code/blob/main/courses/coding-in-C/Lab_1/selectCompiler.png)
+   ![Image of compiler selection drop down menu in VSCode](https://github.com/christian-braunagel/study-code/blob/main/courses/coding-in-C/Lab_01/selectCompiler.png)
 
 3. Give it some seconds.
 4. If everything works, it should print out the words "Hello World" (or whatever you coded into your c-file) on your terminal.
@@ -197,10 +197,10 @@ gcc helloWorld.c -o helloWorld.o
 1. Open the terminal ```Visual Studio Developer Command Prompt```, navigate to your code folder and open Visual Studion Code with ```code .```.
 2. Open your file "helloWorld.c" in VSCode and press F5 (or use the menue ```Run > Start Debugging``` or ```Run > Run without Debugging```).
 
-![Image of the icon in VSCode](https://github.com/christian-braunagel/study-code/blob/main/courses/coding-in-C/Lab_1/runCFileInVSCode.png)
+![Image of the icon in VSCode](https://github.com/christian-braunagel/study-code/blob/main/courses/coding-in-C/Lab_01/runCFileInVSCode.png)
 
 3. Note: A drop down window on the top of VSCode might occur, asking to select the debug configuration. If so, select the C/C++: cl.exe
 
-   ![Image of compiler selection drop down menu in VSCode](https://github.com/christian-braunagel/study-code/blob/main/courses/coding-in-C/Lab_1/selectCompilerCLang.png)
+   ![Image of compiler selection drop down menu in VSCode](https://github.com/christian-braunagel/study-code/blob/main/courses/coding-in-C/Lab_01/selectCompilerCLang.png)
 4. Give it some seconds.
 5. If everything works, it should print out the words "Hello World" (or whatever you coded into your c-file) on your terminal.
