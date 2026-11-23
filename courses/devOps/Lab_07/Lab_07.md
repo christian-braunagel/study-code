@@ -5,7 +5,6 @@ distributed. Extend one project and one pipeline throughout the lab.
 
 Distinguish a package (the distributable files)
 from a release (a version, notes, and the decision to make packages available).
-You do not need Kubernetes or a deployment server for this lab.
 
 All the following sections of this lab are based on the following levels of difficulty:
 
@@ -46,14 +45,9 @@ The starter pipeline builds the project, runs its tests, and measures coverage:
 * `test_app` uses that build, runs CTest, and creates text and HTML coverage reports.
 * Artifacts pass files to subsequent stages and expire after one week.
 
-Later jobs automatically download artifacts from successful jobs in earlier
-stages. No `needs`, caches, templates, or custom pipeline scripts are necessary.
-
 Inspect the files, build and test locally using the project README, then commit
 and push the starter. Verify both jobs and download their coverage reports.
-The CI executable is a **Linux binary** built in `gcc:14`; run it in a compatible
-Linux environment with the necessary runtime libraries. It is not a Windows
-executable or a self-contained installer.
+Note: If you want to run the CI executable, you need to execute it in a compatible Linux environment with the necessary runtime libraries, because it is a **Linux binary** built in `gcc:14`.
 
 Answer in `release_notes.md`:
 
@@ -111,7 +105,6 @@ Answer in your notes:
 
 * What is the difference between the executable and the package?
 * How can you trace the package back to the source commit?
-* Why should a failed test prevent a package from being created?
 
 ## 🟡 Section II: Sign the Package with SHA-256
 
@@ -135,10 +128,8 @@ Extend `.gitlab-ci.yml` with a signing job. Write it yourself using these requir
 5. Sign the existing `dist/status-analyzer-$APP_VERSION.zip` using SHA-256 and
    the private key. Save the detached signature alongside the ZIP as
    `dist/status-analyzer-$APP_VERSION.zip.sig`.
-6. Verify the signature using the public key. A verification failure must fail
-   the job. Do not modify or recreate the ZIP after signing it.
-7. Remove the temporary private key once signing and verification are complete.
-8. Store `dist/` as job artifacts with an expiration of one week. Include the ZIP,
+6. Verify the signature using the public key. A verification failure must fail the job.
+7. Store `dist/` as job artifacts with an expiration of one week. Include the ZIP,
    signature, and public key, but never the private key.
 
 Use `openssl genpkey` to generate the key; its `-algorithm RSA`,
@@ -168,7 +159,6 @@ it using the original signature. Verification must fail.
 Answer in your notes:
 
 * What roles do SHA-256, the private key, and the public key play?
-* Why is `sha256sum package.zip` alone not a digital signature?
 * Why must a private key never appear in Git, packages, or job artifacts?
 * Why must receivers obtain or validate the public key through a trusted channel,
   rather than trust any key downloaded alongside a package?
@@ -192,8 +182,7 @@ In **Settings > CI/CD > Variables**, create `SIGNING_PRIVATE_KEY`:
 * Disable variable expansion and enable **Protect variable**.
 * Protect the `v*` tag pattern in the repository's protected-tag settings and
   restrict who may create matching tags.
-* Multiline PEM content generally cannot meet masked/hidden value requirements.
-  A file variable is not automatically masked. Never print its contents into logs.
+* Multiline PEM content generally cannot meet masked/hidden value requirements, because GitLab requires a single line for masking. Use a file variable instead, which is not printed in logs and is not exposed to unprotected pipelines.
 
 A file variable exposes a temporary **file path**, rather than the PEM text,
 through `$SIGNING_PRIVATE_KEY`. Do not put the private key in YAML or Git. The
@@ -222,41 +211,13 @@ Retain a trusted local public-key copy for later verification.
 
 ### 2. Discuss the Downsides
 
-Answer before reading about external vaults:
+Answer the following questions in your notes:
 
 * How is a CI/CD variable better than a private key in Git?
 * Can a malicious job receiving the key still read or copy it?
 * What do masked, hidden, and protected variables each protect against?
-* Who can change the pipeline receiving the key? Why does code review matter?
 * How would you rotate or revoke a key used across several projects?
 * **How could you improve this design using a vault?**
-
-### 3. Design a Vault-Based Improvement
-
-Read the [external secrets overview](https://docs.gitlab.com/ci/secrets/) and
-[HashiCorp Vault integration](https://docs.gitlab.com/ci/secrets/hashicorp_vault/).
-Design an alternative to the GitLab file variable and document it in your notes:
-
-1. Draw the signing job, Vault, and the package outputs. Mark where the private
-   key is stored and which information crosses each boundary.
-2. Choose how the job authenticates without storing a permanent Vault password
-   in the repository. Investigate GitLab identity tokens and their lifetime.
-3. Describe an access policy that allows only the intended project and protected
-   release tags to use the signing key.
-4. Explain how the job obtains the key temporarily and how your existing signing
-   commands would use it. Which pipeline steps can remain unchanged?
-5. Compare retrieving a private key with requesting a signature from a service
-   that keeps the key inside Vault. Which approach limits key exposure?
-6. Explain how audit logging and key rotation help when multiple projects use
-   the same secret-management system.
-
-Distinguish the lifetime of the job's authentication token from the lifetime of
-the stored signing key. Also consider what a compromised job could still access.
-
-This is a design exercise. A running Vault server and integration are not required
-for the remaining lab; continue with the protected file variable. If your instructor
-supplies Vault, use the supplied project-specific policy and role to replace only
-the key retrieval step. Packaging and signing should remain unchanged.
 
 ## 🟢 Section IV: Create a Release from a Git Tag
 
@@ -270,7 +231,7 @@ Adapt the pipeline so that release packages use the tag as their version:
 1. Change the top-level `APP_VERSION` variable to use `$CI_COMMIT_TAG` instead
    of `$CI_COMMIT_SHORT_SHA`.
 2. Restrict `package_app` to tag pipelines using the same `rules` condition you
-   added to `sign_package` in Section III.
+   added to `sign_package` in Section II.
 3. Keep `build_app` and `test_app` available for branch pipelines as well as tags.
    Check that a branch pipeline cannot attempt packaging with an empty version.
 
@@ -288,7 +249,7 @@ Write a job that creates a GitLab release after successful signing:
    and signing jobs.
 4. Add a short `script` command that prints which version is being released.
    The job still needs a `script` even though release creation uses another keyword.
-5. Add a `release` configuration. Set `tag_name` to `$CI_COMMIT_TAG`, choose a
+5. Add a `release` configuration by using the keyword `release` (see below for explanation). Set `tag_name` to `$CI_COMMIT_TAG`, choose a
    readable `name` containing the version, and write a `description` summarizing
    the application and its test and coverage evidence.
 6. Commit the pipeline and push your branch. Create an annotated version tag
@@ -342,8 +303,6 @@ Answer in your notes:
 * Why should `release_job` run only when `$CI_COMMIT_TAG` exists?
 * What is the difference between branch and tag pipelines?
 * Which changes require major, minor, or patch version increments?
-* How do tag, package version, commit file, and test evidence support traceability?
-* Where would release approvals fit in a safety-relevant process?
 
 ## 🟡 Section V: Publish to the GitLab Package Registry
 
@@ -378,7 +337,7 @@ GitLab provides `CI_API_V4_URL` and `CI_PROJECT_ID`. Files are organized as
 [Generic Package Registry documentation](https://docs.gitlab.com/user/packages/generic_packages/)
 for the upload syntax.
 
-Quote each complete `curl` command in YAML so that the colon in `JOB-TOKEN:` is
+Single Quote each complete `curl` command in YAML so that the colon in `JOB-TOKEN:` is
 not interpreted as a mapping. Outer single quotes around the YAML value and
 double quotes around shell arguments allow the shell to expand the variables.
 
@@ -421,12 +380,6 @@ Answer in your notes:
 * Why are job artifacts alone unsuitable for long-term release storage?
 * How does a package registry differ from a container registry?
 * What happens if uploading fails? Should the release job run?
-* Why should a version identify fixed content even if the registry permits duplicates?
-* What does “build once, release many times” mean? This lab reuses one build across
-  the jobs of a tag pipeline. Later promotion to another environment should also
-  reuse the stored package instead of starting a new build.
+* What does “build once, release many times” mean?
 
-The final flow is **build > test and coverage > package > sign > publish > release**.
-Commit source, tests, CMake, the pipeline, and your notes. Keep keys and generated
-artifacts out of Git. A successful pipeline does not replace organizational
-approvals needed before customer delivery.
+
