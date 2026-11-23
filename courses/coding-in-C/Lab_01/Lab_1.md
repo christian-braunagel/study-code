@@ -98,7 +98,7 @@ Follow-up section to section V.
 9. Create a new commit for these changes.
 10. Display all existing branches.
 
-## 🟡 Section VIII: Merge it
+## 🟢 Section VIII: Merge it
 
 Follow-up section to section VI.
 
@@ -111,7 +111,7 @@ Follow-up section to section VI.
 7. Try to merge main with "another-lorem-ipsum". What happens?
 8. Resolve the conflict so that the changes from "another-lorem-ipsum" are preserved.
 
-## 🟡 Section IX: Working with remote repositories
+## 🟢 Section IX: Working with remote repositories
 
 This section describes the process you should follow for the upcoming labs:
 
@@ -151,7 +151,7 @@ However, in the best case you tried both environments to build the program and r
 5. Create a new file called "helloWorld.c" and write a short Hello World C-program.
 6. Now it is time to build! We will try out several ways to do that.
 
-## 🟡 Section XI: Building C files
+## 🟢 Section XI: Building C files
 
 There are different ways on how to build/trigger the build process. Follow the tutorials below, to get familiar with all of them.
 The steps follow directly after section X but can also be used to build other c-programs.
@@ -162,7 +162,7 @@ The steps follow directly after section X but can also be used to build other c-
    * Note II: If you use GitHub codespaces, you keep using the VSCode terminal from the start.
 2. Enter the following command to build the program:
 ``` bash
-gcc helloWorld.c -o helloWorld.o
+gcc helloWorld.c -o helloWorld
 ```
 3. Explanation of the command:
    * gcc: The command to execute the compiler
