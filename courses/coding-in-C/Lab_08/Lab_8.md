@@ -1,6 +1,14 @@
 # Lab 8: Modular Playlist Manager
 
-## Section I
+All the following sections of this lab are based on the following levels of dificulty:
+
+🟢 __Simple__: A simple coding task that usually guides you step by step through the process and focuses on learning the basics. It should not take more than 15min to finish it.
+
+🟡 __Moderate__: A coding task that usually states a moderate problem to test your understanding and transfer skills from syntax to real-world applications. These tasks can be solved in about 30mins depending on your knowledge.
+
+🔴 __Complex__: Quite a difficult or lengthy coding task that requires you to use the acquired knowledge of the previous tasks in a broader context or project. Such tasks might take up to a few hours to solve them.
+
+## 🟡 Section I
 
 ### Introduction
 In this lab, you will enhance your existing playlist program by making it modular.  
@@ -47,7 +55,7 @@ project/
 - Use the following command to run the build app via terminal: .\playlist_app.exe
 - Not: The command above needs to be adjusted on other operating systems (usually without .exe and with ./)
 
-## Section II: Unit-Testing your Project
+## 🟡 Section II: Unit-Testing your Project
 
 Section II will focus on how to use standard library <assert.h> to create and execute some unit-tests.
 
@@ -98,7 +106,7 @@ int main(void)
    * ``` gcc -I ./include src/main.c playlist.o -o playlist_app ```: Build and link app
 6. Change one of the test cases in a way, that it fails (Fail on purpose) to verify that the unit-tests work.
 
-## Section III: Building the Project with CMake
+## 🟡 Section III: Building the Project with CMake
 
 This section explains how to build the project using **CMake** on all major operating systems.  
 CMake is a cross-platform build system generator that creates platform-specific build files.

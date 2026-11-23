@@ -13,7 +13,15 @@ The project already provides:
 - functions to add, delete, and print songs
 - a modular project structure using header and source files
 
-## Section I: Search Algorithms
+All the following sections of this lab are based on the following levels of dificulty:
+
+🟢 __Simple__: A simple coding task that usually guides you step by step through the process and focuses on learning the basics. It should not take more than 15min to finish it.
+
+🟡 __Moderate__: A coding task that usually states a moderate problem to test your understanding and transfer skills from syntax to real-world applications. These tasks can be solved in about 30mins depending on your knowledge.
+
+🔴 __Complex__: Quite a difficult or lengthy coding task that requires you to use the acquired knowledge of the previous tasks in a broader context or project. Such tasks might take up to a few hours to solve them.
+
+## 🟡 Section I: Search Algorithms
 
 In this section, you should implement a linear search algorithm.
 That means that your search algorithm simply moves through your list and checks every element. If the correct element is found, the algorithm stops.
@@ -34,7 +42,7 @@ Song* find_song_by_title(Playlist *playlist, const char *title);
 5. Return NULL if the song is not found.
 
 
-## Section II: Counting Songs
+## 🟡 Section II: Counting Songs
 
 ### Requirements
 
@@ -46,7 +54,7 @@ int count_songs_recursive(const Song *current);
 2. No loops (for, while) are used
 3. Use recursion only
 
-## Section III: Sorting Algorithms
+## 🔴 Section III: Sorting Algorithms
 
 ### Requirements
 
@@ -58,7 +66,7 @@ void sort_playlist_by_title(Playlist *playlist);
 2. Use the Insertion or Quicksort.
 3. You may swap song contents instead of list nodes but this is not mandatory.
 
-## Section IV: Adapt main.c to show-case the new functions
+## 🟢 Section IV: Adapt main.c to show-case the new functions
 
 ### Requirements
 

@@ -14,7 +14,15 @@ The goal is to:
 
 No plotting is required; the focus is on **data processing and analysis**.
 
-## Section I
+All the following sections of this lab are based on the following levels of dificulty:
+
+🟢 __Simple__: A simple coding task that usually guides you step by step through the process and focuses on learning the basics. It should not take more than 15min to finish it.
+
+🟡 __Moderate__: A coding task that usually states a moderate problem to test your understanding and transfer skills from syntax to real-world applications. These tasks can be solved in about 30mins depending on your knowledge.
+
+🔴 __Complex__: Quite a difficult or lengthy coding task that requires you to use the acquired knowledge of the previous tasks in a broader context or project. Such tasks might take up to a few hours to solve them.
+
+## 🟡 Section I
 Write one or more small programs for the following functions
 to read or write data from/into a text-file.
 - fgetc()
@@ -30,7 +38,7 @@ Create a text-file (.txt) by yourself and put it into the folder of the C-file o
 What happens when you move the file you are reading into another folder?
 What do you need to adjust to solve the issue?
 
-## Section II
+## 🟢 Section II
 Create a struct named Car with three fields: fuel_level and max_fuel_level (float) and model (char array).
 Write a function called refuel() that:
 - Takes a pointer to a Car struct.
@@ -38,7 +46,7 @@ Write a function called refuel() that:
 - increases the car's current fuel level if it does not exceed the max_fuel_level of the car.
 In main, initialize a car with a low fuel level, call the refuel function, and print the result.
 
-## Section III
+## 🔴 Section III
 
 ### Requirements
 

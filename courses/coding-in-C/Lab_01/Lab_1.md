@@ -1,10 +1,16 @@
 # Lab 1: Getting to know the toolchain
 
-## Introduction
-
 This first Lab has the goal to get you started and help you to get more confidence in using the various tools needed to develop great C code.
 
-## Section I: Your first steps in GitHub
+All the following sections of this lab are based on the following levels of dificulty:
+
+🟢 __Simple__: A simple coding task that usually guides you step by step through the process and focuses on learning the basics. It should not take more than 15min to finish it. 
+
+🟡 __Moderate__: A coding task that usually states a moderate problem to test your understanding and transfer skills from syntax to real-world applications. These tasks can be solved in about 30mins depending on your knowledge.
+
+🔴 __Complex__: Quite a difficult or lengthy coding task that requires you to use the acquired knowledge of the previous tasks in a broader context or project. Such tasks might take up to a few hours to solve them.
+
+## 🟢 Section I: Your first steps in GitHub
 
 1. Create a [Github](github.com) account.
 2. (Optional) Register for the [Github Student Pack](https://education.github.com/pack) to increase your free Codespace limits.
@@ -17,7 +23,7 @@ This first Lab has the goal to get you started and help you to get more confiden
 9. Try and build the code using on of the methods described in section XI-A and XI-B below.
 10. After you finished, close the codespace again and stop it.
 
-## Section II: (Optional for DHBW Students) Working on a local computer in one of the pc labs
+## 🟢 Section II: (Optional for DHBW Students) Working on a local computer in one of the pc labs
 
 1. Login on one of the windows pc available in the used pc labs with your account and password.
 2. Create a new folder for your future projects in a fitting directory (e.g. in `C:\Users\<yourUsername>\`).
@@ -30,7 +36,7 @@ This first Lab has the goal to get you started and help you to get more confiden
 7. Create a first c-program (e.g. copy the file code or the file helloWorld.c from the subfolder [solution](https://github.com/christian-braunagel/study-code/blob/main/courses/coding-in-C/Lab_1/solution/helloWorld.c)).
 8. Try and build the code using on of the methods described in section XI-C below.
 
-## Section III: (Optional) Setup the toolchain on your own machine
+## 🟡 Section III: (Optional) Setup the toolchain on your own machine
 1. Download and install [Visual Studio Code](https://code.visualstudio.com/download).
 2. Verify the successful installation by opening VS Code.
 3. Install the [C/C++ extension](https://code.visualstudio.com/docs/languages/cpp#_install-the-extension) in Visual Studio Code.
@@ -39,7 +45,7 @@ This first Lab has the goal to get you started and help you to get more confiden
 6. Verify if the compiler was successful installed and configured by checking for the compiler version in a terminal.
 7. Download and install [Git](https://git-scm.com/install/). Set VS Code as default editor and "main" as default branch name.
 
-## Section IV: Working in the terminal
+## 🟢 Section IV: Working in the terminal
 
 For the following exercises, use can use either the bash terminal in Codespace or Git Bash installed on your machine.
 
@@ -55,7 +61,7 @@ For the following exercises, use can use either the bash terminal in Codespace o
 10. Print the content of each file to the terminal. Start with notes/input.txt.
 11. Delete each file first and then the complete directory "terminal_challenge".
 
-## Section V: Let's Git going
+## 🟢 Section V: Let's Git going
 
 For the following exercises, use can use either the bash terminal in Codespace or Git Bash installed on your machine.
 
@@ -66,7 +72,7 @@ For the following exercises, use can use either the bash terminal in Codespace o
 5. Verify the correct configuration settings afterwards.
 6. Initialize a new Git repo in this directory.
 
-## Section VI: A first commit
+## 🟢 Section VI: A first commit
 
 Follow-up section to section IV.
 
@@ -77,7 +83,7 @@ Follow-up section to section IV.
 5. Verify the output of git status. What changed compared to the previous status?
 6. Check the logs of git and the hash value of your new commit.
 
-## Section VII: Branch away
+## 🟢 Section VII: Branch away
 
 Follow-up section to section V.
 
@@ -92,7 +98,7 @@ Follow-up section to section V.
 9. Create a new commit for these changes.
 10. Display all existing branches.
 
-## Section VIII: Merge it
+## 🟡 Section VIII: Merge it
 
 Follow-up section to section VI.
 
@@ -105,7 +111,7 @@ Follow-up section to section VI.
 7. Try to merge main with "another-lorem-ipsum". What happens?
 8. Resolve the conflict so that the changes from "another-lorem-ipsum" are preserved.
 
-## Section IX: Working with remote repositories
+## 🟡 Section IX: Working with remote repositories
 
 This section describes the process you should follow for the upcoming labs:
 
@@ -129,7 +135,7 @@ You can also use Codesspaces for these exercises starting with point 3.
 10. Check out the pull requests and the changes you pushed to GitHub before merging them.
 11. Pull the merged changes from the remote repository to your local main branch.
 
-## Section X: Hello World!
+## 🟢 Section X: Hello World!
 
 Now, let's put everything of the above sections together and create your first running C-Program.
 Note: The steps below can be performed on your local machine (after following section II) or using GitHub Codespaces (after following section VIII).
@@ -145,7 +151,7 @@ However, in the best case you tried both environments to build the program and r
 5. Create a new file called "helloWorld.c" and write a short Hello World C-program.
 6. Now it is time to build! We will try out several ways to do that.
 
-## Section XI: Building C files
+## 🟡 Section XI: Building C files
 
 There are different ways on how to build/trigger the build process. Follow the tutorials below, to get familiar with all of them.
 The steps follow directly after section X but can also be used to build other c-programs.

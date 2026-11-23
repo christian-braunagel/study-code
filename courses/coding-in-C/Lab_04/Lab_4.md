@@ -4,7 +4,15 @@
 Write a C program that checks if a given word is a palindrome.  
 A palindrome is a word that reads the same forwards and backwards (e.g., "level", "radar").
 
-## Section I
+All the following sections of this lab are based on the following levels of dificulty:
+
+🟢 __Simple__: A simple coding task that usually guides you step by step through the process and focuses on learning the basics. It should not take more than 15min to finish it.
+
+🟡 __Moderate__: A coding task that usually states a moderate problem to test your understanding and transfer skills from syntax to real-world applications. These tasks can be solved in about 30mins depending on your knowledge.
+
+🔴 __Complex__: Quite a difficult or lengthy coding task that requires you to use the acquired knowledge of the previous tasks in a broader context or project. Such tasks might take up to a few hours to solve them.
+
+## 🟡 Section I
 
 Write a short program following these steps:
 1. Creates a string with the content: "Curly bird catches the worm".
@@ -16,7 +24,7 @@ Write a short program following these steps:
 7. Call the function with a string literal "AAtions speak louder than words" directly as parameter. What happens and why?
 8. Resolve the issue from point 7.
 
-## Section II
+## 🟡 Section II
 
 ### Requirements
 
@@ -39,6 +47,6 @@ Please enter your word (max. 100 characters): radar
 
 Your provided word "radar" is a palindrome.
 
-## Section III
+## 🟢 Section III
 
 Adapt your program from section II so that it is case-insensitive.
