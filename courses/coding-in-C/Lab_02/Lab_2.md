@@ -70,7 +70,7 @@ The output must include:
 
 A schematic example of the intended structure:
 
-![Image of final output for Section III](https://github.com/christian-braunagel/study-code/blob/main/courses/coding-in-C/Lab_2/schematicOutput.png)
+![Image of final output for Section III](https://github.com/christian-braunagel/study-code/blob/main/courses/coding-in-C/Lab_02/schematicOutput.png)
 
 
 (The exact characters and spacing must match your implementation.)
